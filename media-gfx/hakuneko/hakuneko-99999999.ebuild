@@ -9,7 +9,7 @@ WX_GTK_VER="2.8"
 inherit mercurial wxwidgets toolchain-funcs eutils
 
 DESCRIPTION="Manga Downloader"
-HOMEPAGE="http://code.google.com/p/hakuneko/"
+HOMEPAGE="http://hakuneko.sourceforge.net/"
 SRC_URI="http://c.fsdn.com/allura/p/hakuneko/icon -> hakuneko.png"
 EHG_REPO_URI="http://hg.code.sf.net/p/hakuneko/code"
 
