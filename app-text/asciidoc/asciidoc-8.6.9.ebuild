@@ -61,17 +61,15 @@ src_install() {
 
 	python_fix_shebang "${ED}"/usr/bin/*.py
 
-	if use examples; then
-		# This is a symlink to a directory
-		rm examples/website/images || die
-
-		dodoc -r examples
-		docompress -x /usr/share/doc/${PF}/examples
-		dosym ../../../asciidoc/images /usr/share/doc/${PF}/examples
-	fi
-
 	dodoc BUGS CHANGELOG README docbook-xsl/asciidoc-docbook-xsl.txt \
 			dblatex/dblatex-readme.txt filters/code/code-filter-readme.txt
+
+	# Below results in some files being installed twice in different locations, but they are in the right place,
+	# uncompressed, and there won't be any broken links. See bug #483336.
+	if use examples; then
+		cp -rL examples/website "${D}"/usr/share/doc/${PF}/examples || die
+	fi
+	docompress -x /usr/share/doc/${PF}/examples
 }
 
 src_test() {
