@@ -2,6 +2,9 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  03 Oct 2014; <calchan@gentoo.org> elementary-xfce-icon-theme-0.4.ebuild:
+  Fix and improve SRC_URI.
+
 *elementary-xfce-icon-theme-0.4 (26 Sep 2014)
 
   26 Sep 2014; Denis Dupeyron <calchan@gentoo.org>
