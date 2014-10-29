@@ -3,25 +3,28 @@
 # $Header: $
 
 EAPI=5
-inherit unpacker gnome2-utils games
+inherit unpacker eutils games
 
 DESCRIPTION="Classic adventure game"
 HOMEPAGE="http://wiki.scummvm.org/index.php/Soltys"
 SRC_URI="linguas_en? ( mirror://sourceforge/scummvm/${PN}-en-v${PV}.zip )
 	linguas_es? ( mirror://sourceforge/scummvm/${PN}-es-v${PV}.zip )
 	linguas_pl? ( mirror://sourceforge/scummvm/${PN}-pl-v${PV}.zip )
+	!linguas_en? ( !linguas_es? ( !linguas_pl? ( mirror://sourceforge/scummvm/${PN}-en-v${PV}.zip ) ) )
 	http://www.scummvm.org/images/cat-soltys.png"
+
 LICENSE="Soltys"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="linguas_en linguas_es linguas_pl"
-REQUIRED_USE="|| ( linguas_en linguas_es linguas_pl )"
+
 RDEPEND=">=games-engines/scummvm-1.5"
 DEPEND="$(unpacker_src_uri_depends)"
+
 S=${WORKDIR}
 
 src_unpack() {
-	if use linguas_en ; then
+	if use linguas_en || ( ! use linguas_en && ! use linguas_es && ! use linguas_pl ) ; then
 		mkdir -p en
 		unpacker ${PN}-en-v${PV}.zip
 		mv vol.{cat,dat} en/
@@ -46,7 +49,7 @@ src_install() {
 	insinto "${GAMES_DATADIR}"/${PN}
 	doins -r *
 	newicon "${DISTDIR}"/cat-soltys.png soltys.png
-	if use linguas_en ; then
+	if use linguas_en || ( ! use linguas_en && ! use linguas_es && ! use linguas_pl ) ; then
 		games_make_wrapper soltys-en "scummvm -f -g hq3x -p \"${GAMES_DATADIR}/${PN}/en\" soltys" .
 		make_desktop_entry ${PN}-en "Soltys (English)" soltys
 	fi
@@ -59,18 +62,4 @@ src_install() {
 		make_desktop_entry ${PN}-pl "Soltys (Polski)" soltys
 	fi
 	prepgamesdirs
-}
-
-pkg_preinst() {
-	games_pkg_preinst
-	gnome2_icon_savelist
-}
-
-pkg_postinst() {
-	games_pkg_postinst
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
 }
