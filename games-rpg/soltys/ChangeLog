@@ -1,9 +1,0 @@
-# ChangeLog for games-rpg/soltys
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: $
-
-*soltys-1.0 (29 Oct 2014)
-
-  29 Oct 2014; Calchan <calchan@gentoo.org> +soltys-1.0.ebuild, +metadata.xml:
-  Initial commit.
-
