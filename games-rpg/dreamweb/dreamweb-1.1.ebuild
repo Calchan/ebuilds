@@ -31,45 +31,39 @@ S=${WORKDIR}
 
 src_unpack() {
 	if use linguas_de ; then
-		mkdir -p de || die
-		cd de || die
+		mkdir -p ${S}/de || die
+		cd ${S}/de || die
 		unpacker ${PN}-cd-de-${PV}.zip
-		cd .. || die
 	fi
 	if use linguas_en || use linguas_en_US || ( ! use linguas_de && ! use linguas_en && ! use linguas_en_GB && \
 			! use linguas_en_US && ! use linguas_es && ! use linguas_fr && ! use linguas_it ) ; then
-		mkdir -p en_US || die
-		cd en_US || die
+		mkdir -p ${S}/en_US || die
+		cd ${S}/en_US || die
 		unpacker ${PN}-cd-us-${PV}.zip
-		cd .. || die
 	fi
 	if use linguas_en_GB ; then
-		mkdir -p en_GB || die
-		cd en_GB || die
+		mkdir -p ${S}/en_GB || die
+		cd ${S}/en_GB || die
 		unpacker ${PN}-cd-uk-${PV}.zip
-		cd .. || die
 	fi
 	if use linguas_es ; then
-		mkdir -p es || die
-		cd es || die
+		mkdir -p ${S}/es || die
+		cd ${S}/es || die
 		unpacker ${PN}-cd-es-${PV}.zip
-		cd .. || die
 	fi
 	if use linguas_fr ; then
-		mkdir -p fr || die
-		cd fr || die
+		mkdir -p ${S}/fr || die
+		cd ${S}/fr || die
 		unpacker ${PN}-cd-fr-${PV}.zip
-		cd .. || die
 	fi
 	if use linguas_it ; then
-		mkdir -p it || die
-		cd it || die
+		mkdir -p ${S}/it || die
+		cd ${S}/it || die
 		unpacker ${PN}-cd-it-${PV}.zip
-		cd .. || die
 	fi
 	if use doc ; then
-		mkdir -p doc || die
-		cd doc || die
+		mkdir -p ${S}/doc || die
+		cd ${S}/doc || die
 		unpacker ${PN}-manuals-en-highres.zip
 	fi
 }
@@ -79,37 +73,39 @@ src_prepare() {
 }
 
 src_install() {
-	if use doc ; then
-		dodoc -r doc/*
-		rm -rf doc || die
-	fi
 	insinto "${GAMES_DATADIR}"/${PN}
-	doins -r *
 	newicon "${DISTDIR}"/cat-dreamweb.png dreamweb.png
 	if use linguas_de ; then
+		doins -r de
 		games_make_wrapper dreamweb-de "scummvm -f -p \"${GAMES_DATADIR}/${PN}/de\" dreamweb" .
 		make_desktop_entry ${PN}-de "Dreamweb (Deutsch)" dreamweb
 	fi
 	if use linguas_en || use linguas_en_US || ( ! use linguas_de && ! use linguas_en && ! use linguas_en_GB && \
 			! use linguas_en_US && ! use linguas_es && ! use linguas_fr && ! use linguas_it ) ; then
+		doins -r en_US
 		games_make_wrapper dreamweb-en_US "scummvm -f -p \"${GAMES_DATADIR}/${PN}/en_US\" dreamweb" .
 		make_desktop_entry ${PN}-en_US "Dreamweb (US English)" dreamweb
 	fi
 	if use linguas_en_GB ; then
+		doins -r en_GB
 		games_make_wrapper dreamweb-en_GB "scummvm -f -p \"${GAMES_DATADIR}/${PN}/en_GB\" dreamweb" .
 		make_desktop_entry ${PN}-en_GB "Dreamweb (UK English)" dreamweb
 	fi
 	if use linguas_es ; then
+		doins -r es
 		games_make_wrapper dreamweb-es "scummvm -f -p \"${GAMES_DATADIR}/${PN}/es\" dreamweb" .
 		make_desktop_entry ${PN}-es "Dreamweb (Español)" dreamweb
 	fi
 	if use linguas_fr ; then
+		doins -r fr
 		games_make_wrapper dreamweb-fr "scummvm -f -p \"${GAMES_DATADIR}/${PN}/fr\" dreamweb" .
 		make_desktop_entry ${PN}-fr "Dreamweb (Français)" dreamweb
 	fi
 	if use linguas_it ; then
+		doins -r it
 		games_make_wrapper dreamweb-it "scummvm -f -p \"${GAMES_DATADIR}/${PN}/it\" dreamweb" .
 		make_desktop_entry ${PN}-it "Dreamweb (Italiano)" dreamweb
 	fi
+	use doc && dodoc -r doc/*
 	prepgamesdirs
 }
