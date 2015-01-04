@@ -20,29 +20,28 @@ KEYWORDS="~amd64 ~x86"
 IUSE="linguas_cs linguas_de linguas_en linguas_pl"
 
 RDEPEND=">=games-engines/scummvm-1.1"
-DEPEND="$(unpacker_src_uri_depends)
-	media-gfx/imagemagick"
+DEPEND="$(unpacker_src_uri_depends)"
 
 S=${WORKDIR}
 
 src_unpack() {
 	if use linguas_en || ( ! use linguas_cs && ! use linguas_de && ! use linguas_en && ! use linguas_pl ) ; then
-		mkdir -p en || die
+		mkdir en || die
 		unpacker dh-en-${PV}.zip
 		mv *.{dfw,fon,mid,sam} en/
 	fi
 	if use linguas_cs ; then
-		mkdir -p cs || die
+		mkdir cs || die
 		unpacker dh-cz-${PV}.zip
 		mv *.{dfw,fon,mid,sam,zzz} cs/
 	fi
 	if use linguas_de ; then
-		mkdir -p de || die
+		mkdir de || die
 		unpacker dh-de-${PV}.zip
 		mv *.{dfw,fon,mid,sam} de/
 	fi
 	if use linguas_pl ; then
-		mkdir -p pl || die
+		mkdir pl || die
 		unpacker dh-pl-${PV}.zip
 		mv *.{dfw,fon,mid,sam,zzz} pl/
 	fi
@@ -53,26 +52,25 @@ src_prepare() {
 }
 
 src_install() {
-	convert bert.ico draci-historie.png || die "convert failed"
-	doicon draci-historie.png
-	rm -f *.{ico,png}
+	newicon bert.ico draci-historie.ico
+	rm -f *.{ico,png} || die
 	insinto "${GAMES_DATADIR}"/${PN}
 	doins -r *
 	if use linguas_en || ( ! use linguas_cs && ! use linguas_de && ! use linguas_en && ! use linguas_pl ) ; then
 		games_make_wrapper draci-historie-en "scummvm -f -p \"${GAMES_DATADIR}/${PN}/en\" draci" .
-		make_desktop_entry ${PN}-en "Dračí Historie (English)" draci-historie
+		make_desktop_entry ${PN}-en "Dračí Historie (English)" /usr/share/pixmaps/draci-historie.ico
 	fi
 	if use linguas_cs ; then
 		games_make_wrapper draci-historie-cs "scummvm -f -p \"${GAMES_DATADIR}/${PN}/cs\" draci" .
-		make_desktop_entry ${PN}-cs "Dračí Historie (Čeština)" draci-historie
+		make_desktop_entry ${PN}-cs "Dračí Historie (Čeština)" /usr/share/pixmaps/draci-historie.ico
 	fi
 	if use linguas_de ; then
 		games_make_wrapper draci-historie-de "scummvm -f -p \"${GAMES_DATADIR}/${PN}/de\" draci" .
-		make_desktop_entry ${PN}-de "Dračí Historie (Deutsch)"  draci-historie
+		make_desktop_entry ${PN}-de "Dračí Historie (Deutsch)"  /usr/share/pixmaps/draci-historie.ico
 	fi
 	if use linguas_pl ; then
 		games_make_wrapper draci-historie-pl "scummvm -f -p \"${GAMES_DATADIR}/${PN}/pl\" draci" .
-		make_desktop_entry ${PN}-pl "Dračí Historie (Polski)"  draci-historie
+		make_desktop_entry ${PN}-pl "Dračí Historie (Polski)"  /usr/share/pixmaps/draci-historie.ico
 	fi
 	prepgamesdirs
 }
