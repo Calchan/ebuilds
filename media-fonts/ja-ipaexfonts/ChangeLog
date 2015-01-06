@@ -1,6 +1,13 @@
 # ChangeLog for media-fonts/ja-ipaexfonts
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+*ja-ipaexfonts-002.01-r1 (06 Jan 2015)
+
+  06 Jan 2015; Denis Dupeyron <calchan@gentoo.org>
+  -ja-ipaexfonts-002.01.ebuild, +ja-ipaexfonts-002.01-r1.ebuild,
+  files/66-ja-ipaexfonts.conf, +files/67-unhint-ja-ipaexfonts.conf:
+  Fix disabling hinting, uncomment it, and move it to its own config file.
 
 *ja-ipaexfonts-002.01 (11 Aug 2014)
 

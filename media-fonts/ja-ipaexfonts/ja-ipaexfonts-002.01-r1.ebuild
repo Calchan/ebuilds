@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -24,6 +24,6 @@ S="${WORKDIR}/${MY_P}"
 
 FONT_SUFFIX="ttf"
 FONT_S="${S}"
-FONT_CONF=( "${FILESDIR}"/66-${PN}.conf )
+FONT_CONF=( "${FILESDIR}"/66-${PN}.conf "${FILESDIR}"/67-unhint-${PN}.conf )
 
 DOCS=( "Readme_${MY_P}.txt" )
