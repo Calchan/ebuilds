@@ -28,34 +28,35 @@ src_unpack() {
 	if use linguas_en || ( ! use linguas_cs && ! use linguas_de && ! use linguas_en && ! use linguas_pl ) ; then
 		mkdir en || die
 		unpacker dh-en-${PV}.zip
-		mv *.{dfw,fon,mid,sam} en/
+		mv *.{dfw,fon,mid,sam} en/ || die
 	fi
 	if use linguas_cs ; then
 		mkdir cs || die
 		unpacker dh-cz-${PV}.zip
-		mv *.{dfw,fon,mid,sam,zzz} cs/
+		mv *.{dfw,fon,mid,sam,zzz} cs/ || die
 	fi
 	if use linguas_de ; then
 		mkdir de || die
 		unpacker dh-de-${PV}.zip
-		mv *.{dfw,fon,mid,sam} de/
+		mv *.{dfw,fon,mid,sam} de/ || die
 	fi
 	if use linguas_pl ; then
 		mkdir pl || die
 		unpacker dh-pl-${PV}.zip
-		mv *.{dfw,fon,mid,sam,zzz} pl/
+		mv *.{dfw,fon,mid,sam,zzz} pl/ || die
 	fi
 }
 
 src_prepare() {
-	rm -f *.{bat,exe,ins} readme.*
+	rm -f *.{bat,exe,ins} readme.* || die
 }
 
 src_install() {
 	newicon bert.ico draci-historie.ico
-	rm -f *.{ico,png} || die
 	insinto "${GAMES_DATADIR}"/${PN}
-	doins -r *
+	for lingua in $(find * -type d); do
+		doins -r ${lingua}
+	done
 	if use linguas_en || ( ! use linguas_cs && ! use linguas_de && ! use linguas_en && ! use linguas_pl ) ; then
 		games_make_wrapper draci-historie-en "scummvm -f -p \"${GAMES_DATADIR}/${PN}/en\" draci" .
 		make_desktop_entry ${PN}-en "Dračí Historie (English)" /usr/share/pixmaps/draci-historie.ico
