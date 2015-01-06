@@ -3,7 +3,7 @@
 # $Header: $
 
 EAPI=5
-inherit git-r3 gnome2-utils
+inherit vcs-snapshot gnome2-utils
 
 COMMIT="2f74e250c6b7af686d9d6a879b129a80692f5ca7"
 
@@ -17,8 +17,6 @@ IUSE=""
 
 RDEPEND=""
 DEPEND=""
-
-S="${WORKDIR}/elementary-xfce-${PV}"
 
 src_install() {
 	insinto /usr/share/icons/

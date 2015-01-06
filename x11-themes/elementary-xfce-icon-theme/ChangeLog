@@ -2,6 +2,10 @@
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  06 Jan 2015; Denis Dupeyron <calchan@gentoo.org>
+  elementary-xfce-icon-theme-0.4_p20141512.ebuild:
+  Fix eclass mess.
+
 *elementary-xfce-icon-theme-0.4_p20141512 (06 Jan 2015)
 
   06 Jan 2015; Denis Dupeyron <calchan@gentoo.org>
