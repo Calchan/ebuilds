@@ -1,13 +1,15 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI=5
-inherit gnome2-utils
+inherit git-r3 gnome2-utils
+
+COMMIT="2f74e250c6b7af686d9d6a879b129a80692f5ca7"
 
 DESCRIPTION="Elementary icons forked from upstream, extended and maintained for Xfce"
 HOMEPAGE="http://github.com/shimmerproject/elementary-xfce"
-SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="${HOMEPAGE}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 LICENSE="public-domain GPL-1 GPL-2 GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
