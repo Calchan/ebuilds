@@ -5,7 +5,7 @@
 EAPI=5
 inherit vcs-snapshot gnome2-utils
 
-COMMIT="ff841d7e0a360341665b7cb26605b5b9ceb12945"
+COMMIT="245ce2f23fcbd25854597bccde60d75312124696"
 
 DESCRIPTION="Elementary icons forked from upstream, extended and maintained for Xfce"
 HOMEPAGE="http://github.com/shimmerproject/elementary-xfce"
