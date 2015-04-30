@@ -22,7 +22,7 @@ RDEPEND="${DEPEND}
 	>=x11-libs/gtk+-3.8:3
 	>=x11-misc/lightdm-gtk-greeter-2.0"
 DEPEND="${DEPEND}
-	>=dev-python/python-distutils-extra-2.18"
+	>=dev-python/python-distutils-extra-2.18[${PYTHON_USEDEP}]"
 
 pkg_setup() {
 	enewgroup sys # Just make sure it exists

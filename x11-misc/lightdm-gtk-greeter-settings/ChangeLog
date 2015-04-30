@@ -2,6 +2,10 @@
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  30 Apr 2015; Denis Dupeyron <calchan@gentoo.org>
+  lightdm-gtk-greeter-settings-1.1.0.ebuild:
+  Fix python target for python-distutils-extra.
+
 *lightdm-gtk-greeter-settings-1.1.0 (30 Apr 2015)
 
   30 Apr 2015; Denis Dupeyron <calchan@gentoo.org>
