@@ -1,0 +1,7 @@
+// Let users in the sys group change settings for the LightDM GTK+ Greeter
+polkit.addRule(function(action, subject) {
+    if (action.id == "com.ubuntu.pkexec.lightdm-gtk-greeter-settings" &&
+        subject.isInGroup("sys") && subject.active) {
+        return "yes";
+    }
+});
