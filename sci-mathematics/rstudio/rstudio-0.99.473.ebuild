@@ -51,14 +51,16 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-QTSLOT=5
 QTVER=5.4
-QT=-${QTVER}:${QTSLOT}
+QTSLOT=5
+QTUSE="declarative opengl qml ssl webkit widgets xml"
+QT="-${QTVER}:${QTSLOT}[${QTUSE// /(+),}(+)]"
 RDEPEND=">=dev-lang/R-2.11.1
 	>=dev-libs/boost-1.50:=
 	dev-libs/openssl:0
 	>=dev-qt/qtcore${QT}
 	>=dev-qt/qtdbus${QT}
+	>=dev-qt/qtdeclarative${QT}
 	>=dev-qt/qtgui${QT}
 	>=dev-qt/qtnetwork${QT}
 	>=dev-qt/qtpositioning${QT}
