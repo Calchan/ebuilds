@@ -85,6 +85,8 @@ DEPEND="${RDEPEND}
 
 QA_PREBUILT="/usr/lib/rstudio/bin/pandoc/pandoc*"
 
+PATCHES=( "${FILESDIR}"/${P}-*.patch )
+
 unpack_to() {
 	mkdir tmp
 	cd tmp
@@ -141,6 +143,8 @@ src_prepare() {
 		-e '/target name="gwtc"/,/<\/target>/s/<jvmarg value="-Xmx1024M"\/>/<jvmarg value="-Xmx1024M"\/>\
 			<jvmarg value="-Djava.util.prefs.userRoot=${env.T}"\/>/' \
 		-i src/gwt/build.xml || die
+
+	cmake-utils_src_prepare
 }
 
 src_configure() {
