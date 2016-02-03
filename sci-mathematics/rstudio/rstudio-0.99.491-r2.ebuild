@@ -78,11 +78,11 @@ DEPEND="${RDEPEND}
 PATCHES=( "${FILESDIR}"/${P}-*.patch )
 
 unpack_to() {
-	mkdir tmp
+	mkdir tmp || die
 	cd tmp
 	unpack ${1}
 	cd ..
-	mkdir -p ${P}/${3}
+	mkdir -p ${P}/${3} || die
 	mv -T tmp/${2} ${P}/${3} || die
 	rm -rf tmp
 }
@@ -109,6 +109,7 @@ src_configure() {
 	export RSTUDIO_VERSION_MINOR=$(get_version_component_range 2)
 	export RSTUDIO_VERSION_PATCH=$(get_version_component_range 3)
 	local mycmakeargs=(
+		-DDISTRO_SHARE=share/${PN}
 		-DCMAKE_INSTALL_PREFIX=/usr/lib/rstudio
 		-DCMAKE_BUILD_TYPE=Release
 		-DRSTUDIO_TARGET=Desktop )
