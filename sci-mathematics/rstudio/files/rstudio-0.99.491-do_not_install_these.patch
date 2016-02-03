@@ -1,0 +1,23 @@
+--- CMakeLists.txt.orig	2016-02-02 16:52:02.880441224 -0700
++++ CMakeLists.txt	2016-02-02 16:53:23.099726701 -0700
+@@ -39,9 +39,6 @@
+ 
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/VERSION.in
+                   ${CMAKE_CURRENT_BINARY_DIR}/VERSION)
+-
+-   # install root docs
+-   include(CMakeInstallDocs.txt)
+ endif()
+ 
+ # overlay
+@@ -52,10 +49,6 @@
+ # main src
+ add_subdirectory(src)
+ 
+-# packaging
+-add_subdirectory(package)
+-
+-
+ 
+ 
+ 
