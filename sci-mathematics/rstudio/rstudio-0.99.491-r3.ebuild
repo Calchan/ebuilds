@@ -123,6 +123,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
+	einfo "Make sure to install any myspell/hunspell dictionaries (app-dicts/myspell-*) you may need."
 	fdo-mime_desktop_database_update
 	fdo-mime_mime_database_update
 	gnome2_icon_cache_update
