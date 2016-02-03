@@ -31,8 +31,7 @@ SRC_URI="${GITHUB}rstudio/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	${AWS}${SELENIUM_SERVER} -> rstudio-${SELENIUM_SERVER}
 	${AWS}${CHROMEDRIVER} -> rstudio-${CHROMEDRIVER}
 	${GITHUB}rmarkdown/archive/${RMARKDOWN} -> rstudio-rmarkdown-${RMARKDOWN}
-	${GITHUB}rsconnect/archive/${RSCONNECT} -> rstudio-rsconnect-${RSCONNECT}
-	https://s3.amazonaws.com/rstudio-dictionaries/core-dictionaries.zip -> rstudio-core-dictionaries.zip"
+	${GITHUB}rsconnect/archive/${RSCONNECT} -> rstudio-rsconnect-${RSCONNECT}"
 
 LICENSE="AGPL-3"
 SLOT="0"
@@ -99,7 +98,6 @@ src_unpack() {
 	unpack_to rstudio-${SELENIUM} selenium-${SELENIUM_VER} src/gwt/lib/selenium/${SELENIUM_VER}
 	cp_to rstudio-${SELENIUM_SERVER} src/gwt/lib/selenium/${SELENIUM_VER}/${SELENIUM_SERVER}
 	cp_to rstudio-${CHROMEDRIVER} src/gwt/lib/selenium/chromedriver/${CHROMEDRIVER_VER}/${CHROMEDRIVER}
-	unpack_to rstudio-core-dictionaries.zip "" dependencies/common/dictionaries
 	unpack_to rstudio-rmarkdown-${RMARKDOWN} rmarkdown-${RMARKDOWN_VER} dependencies/common/rmarkdown
 	unpack_to rstudio-rsconnect-${RSCONNECT} rsconnect-${RSCONNECT_VER} dependencies/common/rsconnect
 }
@@ -109,7 +107,6 @@ src_configure() {
 	export RSTUDIO_VERSION_MINOR=$(get_version_component_range 2)
 	export RSTUDIO_VERSION_PATCH=$(get_version_component_range 3)
 	local mycmakeargs=(
-		-DDISTRO_SHARE=share/${PN}
 		-DCMAKE_INSTALL_PREFIX=/usr/lib/rstudio
 		-DCMAKE_BUILD_TYPE=Release
 		-DRSTUDIO_TARGET=Desktop )
@@ -118,6 +115,7 @@ src_configure() {
 
 src_install() {
 	cmake-utils_src_install
+	dosym /usr/share/hunspell /usr/lib/rstudio/resources/dictionaries
 }
 
 pkg_preinst() {

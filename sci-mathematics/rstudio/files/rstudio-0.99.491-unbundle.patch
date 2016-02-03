@@ -1,6 +1,8 @@
---- src/cpp/session/CMakeLists.txt.orig	2016-02-02 15:30:18.371045328 -0700
-+++ src/cpp/session/CMakeLists.txt	2016-02-02 15:49:00.037622198 -0700
-@@ -17,37 +17,6 @@
+diff --git a/src/cpp/session/CMakeLists.txt.orig b/src/cpp/session/CMakeLists.txt
+index 6cdd371..fbcc844 100644
+--- a/src/cpp/session/CMakeLists.txt.orig
++++ b/src/cpp/session/CMakeLists.txt
+@@ -17,37 +17,6 @@ project (SESSION)
  
  add_subdirectory(workers)
  
@@ -38,10 +40,14 @@
  
  # include files
  file(GLOB_RECURSE SESSION_HEADER_FILES "*.h*")
-@@ -387,22 +356,6 @@
-    install(DIRECTORY "${RSTUDIO_DEPENDENCIES_DIR}/common/dictionaries"
-            DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/resources")
+@@ -383,26 +352,6 @@ if (NOT RSTUDIO_SESSION_WIN64)
+    install(FILES ${R_MODULE_SRC_FILES}
+            DESTINATION ${RSTUDIO_INSTALL_SUPPORTING}/R/modules)
  
+-   # install hunspell dictionaries
+-   install(DIRECTORY "${RSTUDIO_DEPENDENCIES_DIR}/common/dictionaries"
+-           DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/resources")
+-
 -   # install mathjax for local html preview
 -   install(DIRECTORY "${RSTUDIO_DEPENDENCIES_DIR}/common/mathjax-23"
 -           DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/resources")
@@ -61,7 +67,7 @@
     # install rsconnect package
     file(GLOB RSCONNECT_PACKAGE "${RSTUDIO_DEPENDENCIES_DIR}/common/rsconnect*.tar.gz")
     install(FILES ${RSCONNECT_PACKAGE}
-@@ -420,24 +373,6 @@
+@@ -420,24 +369,6 @@ if (NOT RSTUDIO_SESSION_WIN64)
     install(DIRECTORY "resources/help_resources"
             DESTINATION ${RSTUDIO_INSTALL_SUPPORTING}/resources)
  
