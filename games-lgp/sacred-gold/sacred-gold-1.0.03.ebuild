@@ -76,7 +76,7 @@ src_unpack() {
 }
 
 src_install() {
-	dir=${GAMES_PREFIX_OPT}/${PN}
+	dir=${GAMES_PREFIX_OPT}/lgp/${PN}
 
 	insinto "${dir}"
 	mv * "${D}/${dir}" || die
