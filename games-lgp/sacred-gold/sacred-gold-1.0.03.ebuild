@@ -7,7 +7,7 @@ EAPI=5
 inherit versionator eutils cdrom unpacker games
 
 DESCRIPTION="Action role-playing game"
-HOMEPAGE="http://linuxgamepublishing.com/info.php?id=sacred"
+HOMEPAGE="games.gentoo.org"
 SRC_URI=""
 
 LICENSE="all-rights-reserved GPL-2 LGPL-2"
