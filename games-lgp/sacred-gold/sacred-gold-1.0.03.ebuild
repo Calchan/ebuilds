@@ -41,10 +41,10 @@ DEPEND=""
 S=${WORKDIR}
 
 QA_TEXTRELS="
-	opt/sacred-gold/lib/libxml2.so.2
-	opt/sacred-gold/lib/libavutil.so
-	opt/sacred-gold/lib/libavformat.so
-	opt/sacred-gold/lib/libavcodec.so
+	${GAMES_PREFIX_OPT#/}/lgp/sacred-gold/lib/libxml2.so.2
+	${GAMES_PREFIX_OPT#/}/lgp/sacred-gold/lib/libavutil.so
+	${GAMES_PREFIX_OPT#/}/lgp/sacred-gold/lib/libavformat.so
+	${GAMES_PREFIX_OPT#/}/lgp/sacred-gold/lib/libavcodec.so
 "
 
 src_unpack() {
