@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>calchan@gentoo.org</email>
+    <name>Denis Dupeyron</name>
+  </maintainer>
+<use>
+  <flag name="bonuspack">Install extra content released by Egosoft</flag>
+  <flag name="cockpit">Add ship cockpits (need to be activated in the Mod section of the configure screen)</flag>
+  <flag name="modkit">Install x3tool and x3build, useful for building your own updates to the game</flag>
+  <flag name="unbundle">Do not use bundled libraries when possible</flag>
+  <flag name="xtm">Install the fan-made XTM expansion (makes save files incompatible)</flag>
+</use>
+</pkgmetadata>
