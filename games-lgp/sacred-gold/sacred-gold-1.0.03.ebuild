@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils cdrom unpacker games
 
 DESCRIPTION="Action role-playing game"
-HOMEPAGE="games.gentoo.org"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI=""
 
 LICENSE="all-rights-reserved GPL-2 LGPL-2"
