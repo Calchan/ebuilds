@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit versionator eutils cdrom unpacker games
+inherit eutils cdrom unpacker games
 
 DESCRIPTION="Action role-playing game"
 HOMEPAGE="games.gentoo.org"
