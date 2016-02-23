@@ -41,7 +41,7 @@ DEPEND=""
 S=${WORKDIR}
 installdir=${GAMES_PREFIX_OPT}/lgp/${PN}
 
-QA_TEXTRELS="
+QA_PREBUILT="
 	${installdir#/}/lib/libxml2.so.2
 	${installdir#/}/lib/libavutil.so
 	${installdir#/}/lib/libavformat.so
