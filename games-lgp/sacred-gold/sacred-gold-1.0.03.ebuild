@@ -57,7 +57,7 @@ src_unpack() {
 	cp -f "${CDROM_ROOT}"/manual.pdf . || die
 
 	for patchnum in 1.0-1.0.01 1.0.01-1.0.02 1.0.02-1.0.03 ; do
-		mkdir -p "patch"
+		mkdir -p "patch" || die
 		cd "patch"
 		unpack_makeself "${FILESDIR}"/sacred-${patchnum}-x86.run
 		bin/Linux/x86/loki_patch patch.dat "${S}" || die "loki_patch failed"
@@ -66,10 +66,10 @@ src_unpack() {
 	done
 
 	if use unbundle ; then
-		mv lib/lib1/libav*.so lib
-		mv lib/lib1/libgrapple.so lib
+		mv lib/lib1/libav*.so lib || die
+		mv lib/lib1/libgrapple.so lib || die
 	else
-		mv lib/lib{1,2}/* lib
+		mv lib/lib{1,2}/* lib || die
 		rm -f lib/lib{asound,gcc_s,m,stdc++,z}.so.*
 	fi
 	rm -rf lib/lib{1,2}
