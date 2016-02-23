@@ -39,12 +39,13 @@ RDEPEND="
 DEPEND=""
 
 S=${WORKDIR}
+installdir=${GAMES_PREFIX_OPT}/lgp/${PN}
 
 QA_TEXTRELS="
-	${GAMES_PREFIX_OPT#/}/lgp/sacred-gold/lib/libxml2.so.2
-	${GAMES_PREFIX_OPT#/}/lgp/sacred-gold/lib/libavutil.so
-	${GAMES_PREFIX_OPT#/}/lgp/sacred-gold/lib/libavformat.so
-	${GAMES_PREFIX_OPT#/}/lgp/sacred-gold/lib/libavcodec.so
+	${installdir#/}/lib/libxml2.so.2
+	${installdir#/}/lib/libavutil.so
+	${installdir#/}/lib/libavformat.so
+	${installdir#/}/lib/libavcodec.so
 "
 
 src_unpack() {
@@ -76,12 +77,10 @@ src_unpack() {
 }
 
 src_install() {
-	dir=${GAMES_PREFIX_OPT}/lgp/${PN}
+	insinto "${installdir}"
+	mv * "${D}/${installdir}" || die
 
-	insinto "${dir}"
-	mv * "${D}/${dir}" || die
-
-	games_make_wrapper ${PN} ./sacred "${dir}" "${dir}"/lib
+	games_make_wrapper ${PN} ./sacred "${installdir}" "${installdir}"/lib
 	newicon "${CDROM_ROOT}"/.data/icon.xpm ${PN}.xpm
 	make_desktop_entry ${PN} "Sacred - Gold" ${PN}
 
