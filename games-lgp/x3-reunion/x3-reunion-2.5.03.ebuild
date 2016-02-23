@@ -63,7 +63,7 @@ src_unpack() {
 	use modkit && cp -rf "${CDROM_ROOT}"/.data/bin/Linux/x86/modkit . || die
 
 	for patchnum in 2.5-2.5.01 2.5.01-2.5.02 2.5.02-2.5.03 ; do
-		mkdir -p "patch"
+		mkdir -p "patch" || die
 		cd "patch"
 		unpack_makeself "${FILESDIR}"/x3-${patchnum}-x86.run
 		bin/Linux/x86/loki_patch patch.dat "${S}" || die "loki_patch failed"
@@ -72,9 +72,9 @@ src_unpack() {
 	done
 
 	if use unbundle ; then
-		mv lib/lib1/libav*.so lib
+		mv lib/lib1/libav*.so lib || die
 	else
-		mv lib/lib{1,2}/* lib
+		mv lib/lib{1,2}/* lib || die
 		rm -f lib/lib{asound,gcc_s,m,stdc++,z}.so.*
 	fi
 	rm -rf lib/lib{1,2}
