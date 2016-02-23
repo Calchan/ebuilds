@@ -1,0 +1,5 @@
+This overlay is not in Layman's official list. To add it, do:
+
+wget https://raw.githubusercontent.com/Calchan/ebuilds/master/calchan.xml -O /etc/layman/overlays/calchan.xml
+layman -f
+layman -a calchan
