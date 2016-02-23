@@ -39,11 +39,12 @@ RDEPEND="
 DEPEND=""
 
 S=${WORKDIR}
+installdir=${GAMES_PREFIX_OPT}/lgp/${PN}
 
 QA_TEXTRELS="
-	${GAMES_PREFIX_OPT#/}/lgp/x3-reunion/lib/libavutil.so
-	${GAMES_PREFIX_OPT#/}/lgp/x3-reunion/lib/libavformat.so
-	${GAMES_PREFIX_OPT#/}/lgp/x3-reunion/lib/libavcodec.so
+	${installdir#/}/lib/libavutil.so
+	${installdir#/}/lib/libavformat.so
+	${installdir#/}/lib/libavcodec.so
 "
 
 src_unpack() {
@@ -81,13 +82,11 @@ src_unpack() {
 }
 
 src_install() {
-	dir=${GAMES_PREFIX_OPT}/lgp/${PN}
+	insinto "${installdir}"
+	mv * "${D}/${installdir}" || die
+	fperms +x "${installdir}"/x3-launcher
 
-	insinto "${dir}"
-	mv * "${D}/${dir}" || die
-	fperms +x "${dir}"/x3-launcher
-
-	games_make_wrapper ${PN} ./x3-launcher "${dir}" "${dir}"/lib
+	games_make_wrapper ${PN} ./x3-launcher "${installdir}" "${installdir}"/lib
 	newicon "${CDROM_ROOT}"/.data/icon.xpm ${PN}.xpm
 	make_desktop_entry ${PN} "X3 Reunion" ${PN}
 
