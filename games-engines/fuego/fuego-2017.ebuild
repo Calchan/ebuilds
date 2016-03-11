@@ -10,7 +10,7 @@ DESCRIPTION="Monte Carlo tree search game engine for Go"
 HOMEPAGE="http://fuego.sourceforge.net/"
 SRC_URI="https://sourceforge.net/code-snapshots/svn/f/fu/fuego/code/fuego-code-${PV}-trunk.zip"
 
-LICENSE="GPL-3"
+LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cache-sync"
