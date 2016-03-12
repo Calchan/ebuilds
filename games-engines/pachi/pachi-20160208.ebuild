@@ -10,7 +10,7 @@ COMMIT=27b4f1910a79dbe23ed7bebd3dfd8b10267e72d2
 
 DESCRIPTION="Monte Carlo tree search game engine for Go"
 HOMEPAGE="http://pachi.or.cz/"
-SRC_URI="http://repo.or.cz/pachi.git/snapshot/${COMMIT}.tar.gz
+SRC_URI="http://repo.or.cz/pachi.git/snapshot/${COMMIT}.tar.gz -> ${P}.tar.gz
 	http://pachi.or.cz/pat/gogod-handikgspachi/patterns.prob.xz
 	http://pachi.or.cz/pat/gogod-handikgspachi/patterns.spat.xz"
 
