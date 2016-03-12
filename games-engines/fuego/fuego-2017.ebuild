@@ -8,7 +8,7 @@ inherit autotools games
 
 DESCRIPTION="Monte Carlo tree search game engine for Go"
 HOMEPAGE="http://fuego.sourceforge.net/"
-SRC_URI="https://sourceforge.net/code-snapshots/svn/f/fu/fuego/code/fuego-code-${PV}-trunk.zip"
+SRC_URI=""
 
 LICENSE="LGPL-3"
 SLOT="0"
@@ -18,7 +18,15 @@ IUSE="cache-sync"
 DEPEND=">=dev-libs/boost-1.50.0"
 RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/fuego-code-${PV}-trunk
+MY_PN=fuego-code-${PV}-trunk
+S=${WORKDIR}/${MY_PN}
+
+src_unpack() {
+	# Ugly hack due to the checksum of the source tarball not being constant.
+	# Kids, do not do that at home.
+	wget https://sourceforge.net/code-snapshots/svn/f/fu/fuego/code/${MY_PN}.zip
+	unzip ${MY_PN}.zip
+}
 
 src_prepare() {
 	sed 's/^fuego_LDFLAGS = \$(BOOST_LDFLAGS)/fuego_LDFLAGS = \$(BOOST_LDFLAGS) -pthread/' -i fuegomain/Makefile.am || die
