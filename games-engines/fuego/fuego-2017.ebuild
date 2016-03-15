@@ -24,7 +24,7 @@ S=${WORKDIR}/${MY_PN}
 src_unpack() {
 	# Ugly hack due to the checksum of the source tarball not being constant.
 	# Kids, do not do that at home.
-	wget https://sourceforge.net/code-snapshots/svn/f/fu/fuego/code/${MY_PN}.zip
+	wget http://sourceforge.net/code-snapshots/svn/f/fu/fuego/code/${MY_PN}.zip
 	unzip ${MY_PN}.zip
 }
 
