@@ -1,9 +1,0 @@
---- src/cpp/desktop/resources/freedesktop/rstudio.desktop.in.orig	2016-02-03 13:11:16.037549837 -0700
-+++ src/cpp/desktop/resources/freedesktop/rstudio.desktop.in	2016-02-03 13:12:23.420279087 -0700
-@@ -4,5 +4,6 @@
- Type=Application
- Terminal=false
- Name=RStudio
-+Comment=IDE for the R language
- Categories=Development;
- MimeType=text/x-r-source;text/x-r;text/x-R;text/x-r-doc;text/x-r-sweave;text/x-r-markdown;text/x-r-html;text/x-r-presentation;application/x-r-data;application/x-r-project;text/x-r-history;text/x-r-profile;text/x-tex;text/x-markdown;text/html;text/css;text/javascript;text/x-chdr;text/x-csrc;text/x-c++hdr;text/x-c++src;
