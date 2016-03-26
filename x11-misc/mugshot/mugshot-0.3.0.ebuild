@@ -24,6 +24,7 @@ RDEPEND="dev-python/dbus-python[${PYTHON_USEDEP}]
 DEPEND=">=dev-python/python-distutils-extra-2.18[${PYTHON_USEDEP}]"
 
 pkg_preinst() {
+	gnome2_schemas_savelist
 	gnome2_icon_savelist
 }
 
