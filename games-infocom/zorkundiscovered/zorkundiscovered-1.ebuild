@@ -5,6 +5,6 @@
 EAPI=5
 
 GAME_DATA=ZTUU.DAT
-inherit infocom
+inherit z-machine
 
 DESCRIPTION="Zork : The Undiscovered Underground"

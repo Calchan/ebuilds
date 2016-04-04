@@ -5,6 +5,6 @@
 EAPI=5
 
 GAME_DATA=ZORK1.DAT
-inherit infocom
+inherit z-machine
 
 DESCRIPTION="Zork I: The Great Underground Empire"

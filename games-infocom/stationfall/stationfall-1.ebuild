@@ -5,6 +5,6 @@
 EAPI=5
 
 GAME_DATA=STATIONF.DAT
-inherit infocom
+inherit z-machine
 
 DESCRIPTION="Science fiction"

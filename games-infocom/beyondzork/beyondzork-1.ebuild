@@ -5,6 +5,6 @@
 EAPI=5
 
 GAME_DATA=BEYONDZO.DAT
-inherit infocom
+inherit z-machine
 
 DESCRIPTION="Beyond Zork: The Coconut of Quendor"

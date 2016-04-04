@@ -5,6 +5,6 @@
 EAPI=5
 
 GAME_DATA=ZORK2.DAT
-inherit infocom
+inherit z-machine
 
 DESCRIPTION="Zork II: The Wizard of Frobozz"

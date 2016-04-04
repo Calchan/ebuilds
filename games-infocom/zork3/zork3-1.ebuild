@@ -5,6 +5,6 @@
 EAPI=5
 
 GAME_DATA=ZORK3.DAT
-inherit infocom
+inherit z-machine
 
 DESCRIPTION="Zork III: The Dungeon Master"

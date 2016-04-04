@@ -5,6 +5,6 @@
 EAPI=5
 
 GAME_DATA=BORDERZO.DAT
-inherit infocom
+inherit z-machine
 
 DESCRIPTION="Espionage"

@@ -5,6 +5,6 @@
 EAPI=5
 
 GAME_DATA=ENCHANTE.DAT
-inherit infocom
+inherit z-machine
 
 DESCRIPTION="The Enchanter Trilogy I"

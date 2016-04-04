@@ -2,17 +2,17 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# @ECLASS: infocom.eclass
+# @ECLASS: z-machine.eclass
 # @MAINTAINER:
 # Denis Dupeyron <calchan@gentoo.org>
 # @BLURB: Install Infocom's Z-machine games.
 # @DESCRIPTION:
-# This eclass will automatically install Infocom Z-machine games. Although
+# This eclass will automatically install Infocom's Z-machine games. Although
 # considered abandoned by a lot of people these games are now owned by
 # Activision. The user will thus have to buy the game, extract the
 # corresponding .DAT file and place it in the system's distfiles location. All
 # the developer has to do is, in the following order, set the GAME_DATA
-# variable to the name of the .DAT file, import the infocom eclass and then set
+# variable to the name of the .DAT file, import the z-machine eclass and then set
 # the DESCRIPTION variable appropriately.
 
 inherit games unpacker
@@ -34,15 +34,15 @@ RDEPEND="games-engines/frotz"
 S="${WORKDIR}"
 INFOCOM_INSTALLDIR="${GAMES_PREFIX_OPT}/infocom"
 
-infocom_pkg_nofetch() {
+z-machine_pkg_nofetch() {
 	einfo "Please extract ${GAME_DATA} from your install medium and move it to ${DISTDIR}"
 }
 
-infocom_src_unpack() {
+z-machine_src_unpack() {
 	:
 }
 
-infocom_src_prepare() {
+z-machine_src_prepare() {
 	cat <<-EOF >> ${PN}
 		#!/bin/sh
 		mkdir -p "\${HOME}/.local/share/infocom/${PN}"
@@ -51,14 +51,14 @@ infocom_src_prepare() {
 	EOF
 }
 
-infocom_src_install() {
+z-machine_src_install() {
 	dogamesbin ${PN}
 	insinto "${INFOCOM_INSTALLDIR}"
 	doins "${DISTDIR}/${GAME_DATA}"
 	prepgamesdirs
 }
 
-infocom_pkg_postinst() {
+z-machine_pkg_postinst() {
 	games_pkg_postinst
 	einfo "${PN} is a text-mode game. To play it, type the following command in a terminal:"
 	einfo "    ${PN}"

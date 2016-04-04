@@ -5,6 +5,6 @@
 EAPI=5
 
 GAME_DATA=WITNESS.DAT
-inherit infocom
+inherit z-machine
 
 DESCRIPTION="Murder mystery"

@@ -5,6 +5,6 @@
 EAPI=5
 
 GAME_DATA=WISHBRIN.DAT
-inherit infocom
+inherit z-machine
 
 DESCRIPTION="Fantasy"

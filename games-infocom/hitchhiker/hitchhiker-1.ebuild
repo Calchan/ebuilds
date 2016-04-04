@@ -5,6 +5,6 @@
 EAPI=5
 
 GAME_DATA=HITCHHIK.DAT
-inherit infocom
+inherit z-machine
 
 DESCRIPTION="The Hitchhiker's Guide to the Galaxy"
