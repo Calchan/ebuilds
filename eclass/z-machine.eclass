@@ -47,7 +47,7 @@ z-machine_src_prepare() {
 		#!/bin/sh
 		mkdir -p "\${HOME}/.local/share/infocom/${PN}"
 		cd "\${HOME}/.local/share/infocom/${PN}"
-		frotz "${INFOCOM_INSTALLDIR}/${GAME_DATA}"
+		frotz "\${@}" "${INFOCOM_INSTALLDIR}/${GAME_DATA}"
 	EOF
 }
 
@@ -61,5 +61,6 @@ z-machine_src_install() {
 z-machine_pkg_postinst() {
 	games_pkg_postinst
 	einfo "${PN} is a text-mode game. To play it, type the following command in a terminal:"
-	einfo "    ${PN}"
+	einfo "    ${PN} [options]"
+	einfo "All options on the command-line will be passed as-is to the interpreter (frotz)."
 }
