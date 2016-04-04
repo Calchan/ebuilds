@@ -62,5 +62,5 @@ z-machine_pkg_postinst() {
 	games_pkg_postinst
 	einfo "${PN} is a text-mode game. To play it, type the following command in a terminal:"
 	einfo "    ${PN} [options]"
-	einfo "All options on the command-line will be passed as-is to the interpreter (frotz)."
+	einfo "All options will be passed as-is to the interpreter (frotz)."
 }
