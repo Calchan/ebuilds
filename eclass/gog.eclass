@@ -66,7 +66,6 @@ gog_src_install() {
 	if ! use unbundle; then
 		mv lib "${D}"/${GOG_DIR} || die
 	fi
-	mv  docs/Manuals "${D}"/${GOG_DIR} || die
 	newicon ${GOG_ICON} gog_${PN}.${GOG_ICON##*.}
 	make_wrapper gog_${PN} "./${GOG_EXE}" "${GOG_DIR}" "${GOG_DIR}/lib"
 	make_desktop_entry gog_${PN} "${GOG_NAME}" gog_${PN}
