@@ -47,6 +47,17 @@ GOG_DIR=${GAMES_PREFIX_OPT}/gog/${PN}
 
 QA_PREBUILT="${QA_PREBUILT} ${GOG_DIR}/${GOG_EXE} ${GOG_DIR}/lib/*"
 
+gog_move() {
+	dodir ${GOG_DIR}
+	if [[ "${1}" == "-d" ]]; then
+		echo "Moving contents of '${2}' to '${D}/${GOG_DIR}/${3}'"
+		find "${2}" -mindepth 1 -maxdepth 1 | xargs mv -t "${D}/${GOG_DIR}/${3}" || die
+	else
+		echo "Moving '${1}' to '${D}/${GOG_DIR}/${2}'"
+		mv "${1}" "${D}/${GOG_DIR}/${2}" || die
+	fi
+}
+
 gog_linklib() {
 	dodir ${GOG_DIR}/lib
 	dosym /usr/$(get_abi_LIBDIR x86)/${1} ${GOG_DIR}/lib/${2}
@@ -61,11 +72,6 @@ gog_src_unpack() {
 }
 
 gog_src_install() {
-	dodir ${GOG_DIR}
-	mv game/* "${D}"/${GOG_DIR} || die
-	if ! use unbundle; then
-		mv lib "${D}"/${GOG_DIR} || die
-	fi
 	newicon ${GOG_ICON} gog_${PN}.${GOG_ICON##*.}
 	make_wrapper gog_${PN} "./${GOG_EXE}" "${GOG_DIR}" "${GOG_DIR}/lib"
 	make_desktop_entry gog_${PN} "${GOG_NAME}" gog_${PN}
