@@ -33,5 +33,6 @@ KEYWORDS="~amd64 ~x86"
 
 src_install() {
 	gog_src_install
+	mv docs/Manuals "${D}"/${GOG_DIR} || die
 	use unbundle && gog_linklib libjson-c.so libjson.so.0
 }
