@@ -19,7 +19,6 @@ esac
 HOMEPAGE="https://www.gog.com/game/${GOG_PAGE}"
 LICENSE="all-rights-reserved"
 SLOT="0"
-IUSE="unbundle"
 RESTRICT="fetch bindist"
 
 GOG_DEPEND="${GOG_DEPEND} virtual/opengl"
@@ -36,9 +35,12 @@ else
 	bundle_deps="${GOG_BUNDLE}"
 fi
 
-RDEPEND="${RDEPEND}
-	${always_deps}
-	unbundle? ( ${bundle_deps} )"
+RDEPEND="${RDEPEND} ${always_deps}"
+if [[ ${bundle_deps} != "" ]]; then
+	IUSE="unbundle"
+	RDEPEND="${RDEPEND} unbundle? ( ${bundle_deps} )"
+fi
+
 DEPEND="${DEPEND}
 	app-arch/unzip"
 
@@ -50,10 +52,8 @@ QA_PREBUILT="${QA_PREBUILT} ${GOG_DIR}/${GOG_EXE} ${GOG_DIR}/lib/*"
 gog_move() {
 	dodir ${GOG_DIR}
 	if [[ "${1}" == "-d" ]]; then
-		echo "Moving contents of '${2}' to '${D}/${GOG_DIR}/${3}'"
 		find "${2}" -mindepth 1 -maxdepth 1 | xargs mv -t "${D}/${GOG_DIR}/${3}" || die
 	else
-		echo "Moving '${1}' to '${D}/${GOG_DIR}/${2}'"
 		mv "${1}" "${D}/${GOG_DIR}/${2}" || die
 	fi
 }
