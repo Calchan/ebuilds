@@ -60,7 +60,7 @@ gog_install() {
 	# FIXME Use dirname
 	dodir ${GOG_DIR}
 	if [[ "${1}" == "-d" ]]; then
-		find "${2}" -mindepth 1 -maxdepth 1 | xargs mv -t "${D}/${GOG_DIR}/${3}" || die
+		find "${2}" -mindepth 1 -maxdepth 1 -exec mv -t "${D}/${GOG_DIR}/${3}" {} \; || die
 	else
 		mv "${1}" "${D}/${GOG_DIR}/${2}" || die
 	fi
@@ -99,7 +99,7 @@ gog_src_install() {
 	if [[ ${GOG_TYPE} == "DOSBOX" ]]; then
 		dogamesbin gog_${PN}
 	else
-		make_wrapper gog_${PN} "./${GOG_EXE}" "${GOG_DIR}" "${GOG_DIR}/lib"
+		make_wrapper gog_${PN} "\"./${GOG_EXE}\"" "${GOG_DIR}" "${GOG_DIR}/lib"
 	fi
 	newicon ${GOG_ICON} gog_${PN}.${GOG_ICON##*.}
 	make_desktop_entry gog_${PN} "${GOG_NAME}" gog_${PN}
