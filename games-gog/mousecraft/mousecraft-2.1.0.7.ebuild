@@ -5,12 +5,11 @@
 EAPI=5
 
 DESCRIPTION="Puzzle game where you help mice in their relentless quest for cheese"
+SRC_URI="gog_${PN}_${PV}.sh"
 GOG_NAME="MouseCraft"
 GOG_PAGE="mousecraft"
-SRC_URI="gog_${PN}_${PV}.sh"
-GOG_EXE="Mouse"
-GOG_ICON="support/icon.png"
-GOG_NATIVE64=1
+GOG_EXE="MouseCraft"
+GOG_TYPE="64BIT"
 
 inherit gog
 

@@ -23,7 +23,7 @@ RESTRICT="fetch bindist"
 
 GOG_DEPEND="${GOG_DEPEND} virtual/opengl"
 
-if [ -z ${GOG_NATIVE64+x} ]; then
+if [[ ${GOG_TYPE}=="64BIT" ]; then
 	for dep in ${GOG_DEPEND}; do
 		always_deps="${always_deps} ${dep}[abi_x86_32(-)]"
 	done
@@ -46,6 +46,7 @@ DEPEND="${DEPEND}
 
 S=${WORKDIR}/data/noarch
 GOG_DIR=${GAMES_PREFIX_OPT}/gog/${PN}
+GOG_ICON="support/icon.png"
 
 QA_PREBUILT="${QA_PREBUILT} ${GOG_DIR}/${GOG_EXE} ${GOG_DIR}/lib/*"
 
