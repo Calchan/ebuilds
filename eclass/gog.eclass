@@ -12,7 +12,7 @@
 inherit games eutils gnome2-utils multilib unpacker
 
 case ${EAPI:-0} in
-	5) EXPORT_FUNCTIONS pkg_nofetch src_unpack src_install pkg_preinst pkg_postinst pkg_postrm;;
+	5) EXPORT_FUNCTIONS pkg_nofetch src_unpack src_prepare src_install pkg_preinst pkg_postinst pkg_postrm;;
 	*) die "EAPI=${EAPI} is not supported by gog.eclass";;
 esac
 
@@ -22,7 +22,11 @@ LICENSE="all-rights-reserved"
 SLOT="0"
 RESTRICT="fetch bindist"
 
-GOG_DEPEND="${GOG_DEPEND} virtual/opengl"
+if [[ ${GOG_TYPE} == "DOSBOX" ]]; then
+	RDEPEND="games-emulation/dosbox"
+else
+	GOG_DEPEND="${GOG_DEPEND} virtual/opengl"
+fi
 
 if [[ ${GOG_TYPE} == "64BIT" ]]; then
 	for dep in ${GOG_DEPEND}; do
@@ -53,6 +57,7 @@ GOG_SUFFIX64=".x86_64"
 QA_PREBUILT="${QA_PREBUILT} ${GOG_DIR}/* ${GOG_DIR}/*/* ${GOG_DIR}/*/*/* ${GOG_DIR}/*/*/*/* ${GOG_DIR}/*/*/*/*/*"
 
 gog_install() {
+	# FIXME Use dirname
 	dodir ${GOG_DIR}
 	if [[ "${1}" == "-d" ]]; then
 		find "${2}" -mindepth 1 -maxdepth 1 | xargs mv -t "${D}/${GOG_DIR}/${3}" || die
@@ -62,6 +67,7 @@ gog_install() {
 }
 
 gog_linklib() {
+	# FIXME Not only in lib, use dirname
 	dodir ${GOG_DIR}/lib
 	dosym /usr/$(get_abi_LIBDIR x86)/${1} ${GOG_DIR}/lib/${2}
 }
@@ -74,12 +80,27 @@ gog_src_unpack() {
 	unpack_zip "${DISTDIR}/${SRC_URI}"
 }
 
+gog_src_prepare() {
+	cat <<-EOF >> gog_${PN}
+		#!/bin/sh
+		mkdir -p "\${HOME}/.local/share/gog/${PN}"
+		cd "\${HOME}/.local/share/gog/${PN}"
+		find . -type l -delete
+		for file in \$(find "${GOG_DIR}" -mindepth 1); do ln -s "\${file}" .; done
+		dosbox "${GOG_EXE}" -exit
+	EOF
+}
+
 gog_src_install() {
 	if [[ ${GOG_TYPE} == "64BIT" ]]; then
 		use x86 && GOG_EXE="${GOG_EXE}${GOG_SUFFIX32}"
 		use amd64 && GOG_EXE="${GOG_EXE}${GOG_SUFFIX64}"
 	fi
-	make_wrapper gog_${PN} "./${GOG_EXE}" "${GOG_DIR}" "${GOG_DIR}/lib"
+	if [[ ${GOG_TYPE} == "DOSBOX" ]]; then
+		dogamesbin gog_${PN}
+	else
+		make_wrapper gog_${PN} "./${GOG_EXE}" "${GOG_DIR}" "${GOG_DIR}/lib"
+	fi
 	newicon ${GOG_ICON} gog_${PN}.${GOG_ICON##*.}
 	make_desktop_entry gog_${PN} "${GOG_NAME}" gog_${PN}
 	prepgamesdirs
