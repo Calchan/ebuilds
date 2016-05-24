@@ -49,7 +49,7 @@ GOG_DIR=${GAMES_PREFIX_OPT}/gog/${PN}
 
 QA_PREBUILT="${QA_PREBUILT} ${GOG_DIR}/${GOG_EXE} ${GOG_DIR}/lib/*"
 
-gog_move() {
+gog_install() {
 	dodir ${GOG_DIR}
 	if [[ "${1}" == "-d" ]]; then
 		find "${2}" -mindepth 1 -maxdepth 1 | xargs mv -t "${D}/${GOG_DIR}/${3}" || die

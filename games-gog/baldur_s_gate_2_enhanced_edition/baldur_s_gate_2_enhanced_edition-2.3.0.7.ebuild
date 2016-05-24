@@ -32,11 +32,11 @@ inherit gog
 KEYWORDS="~amd64 ~x86"
 
 src_install() {
-	gog_move -d game
+	gog_install -d game
 	if use unbundle; then
 		gog_linklib libjson-c.so libjson.so.0
 	else
-		gog_move lib
+		gog_install lib
 	fi
 	gog_src_install
 }
