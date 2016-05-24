@@ -103,6 +103,14 @@ gog_src_install() {
 	fi
 	newicon ${GOG_ICON} gog_${PN}.${GOG_ICON##*.}
 	make_desktop_entry gog_${PN} "${GOG_NAME}" gog_${PN}
+	if [[ ${GOG_EXTRA_EXE} != "" ]]; then
+		if [[ ${GOG_TYPE} == "64BIT" ]]; then
+			use x86 && GOG_EXTRA_EXE="${GOG_EXTRA_EXE}${GOG_SUFFIX32}"
+			use amd64 && GOG_EXTRA_EXE="${GOG_EXTRA_EXE}${GOG_SUFFIX64}"
+		fi
+		make_wrapper gog_${PN}_extra "\"./${GOG_EXTRA_EXE}\"" "${GOG_DIR}" "${GOG_DIR}/lib"
+		make_desktop_entry gog_${PN}_extra "${GOG_EXTRA_NAME}" gog_${PN} "" "Comment=${GOG_EXTRA_DESCRIPTION}"
+	fi
 	prepgamesdirs
 }
 
