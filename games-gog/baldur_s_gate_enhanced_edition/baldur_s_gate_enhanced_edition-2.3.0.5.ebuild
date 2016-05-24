@@ -5,7 +5,6 @@
 EAPI=5
 
 DESCRIPTION="Epic fantasy RPG mixing mystery, intrigue, and adventure"
-SRC_URI="gog_${PN}_${PV}.sh"
 GOG_NAME="Baldur's Gate: Enhanced Edition"
 GOG_PAGE="baldurs_gate_enhanced_edition"
 GOG_BUNDLE="

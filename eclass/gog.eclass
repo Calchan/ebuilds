@@ -17,13 +17,14 @@ case ${EAPI:-0} in
 esac
 
 HOMEPAGE="https://www.gog.com/game/${GOG_PAGE}"
+SRC_URI="gog_${PN}_${PV}.sh"
 LICENSE="all-rights-reserved"
 SLOT="0"
 RESTRICT="fetch bindist"
 
 GOG_DEPEND="${GOG_DEPEND} virtual/opengl"
 
-if [[ ${GOG_TYPE}=="64BIT" ]; then
+if [[ ${GOG_TYPE} == "64BIT" ]]; then
 	for dep in ${GOG_DEPEND}; do
 		always_deps="${always_deps} ${dep}[abi_x86_32(-)]"
 	done
@@ -41,14 +42,15 @@ if [[ ${bundle_deps} != "" ]]; then
 	RDEPEND="${RDEPEND} unbundle? ( ${bundle_deps} )"
 fi
 
-DEPEND="${DEPEND}
-	app-arch/unzip"
+DEPEND="${DEPEND} app-arch/unzip"
 
 S=${WORKDIR}/data/noarch
 GOG_DIR=${GAMES_PREFIX_OPT}/gog/${PN}
 GOG_ICON="support/icon.png"
+GOG_SUFFIX32=".x86"
+GOG_SUFFIX64=".x86_64"
 
-QA_PREBUILT="${QA_PREBUILT} ${GOG_DIR}/${GOG_EXE} ${GOG_DIR}/lib/*"
+QA_PREBUILT="${QA_PREBUILT} ${GOG_DIR}/* ${GOG_DIR}/*/* ${GOG_DIR}/*/*/* ${GOG_DIR}/*/*/*/* ${GOG_DIR}/*/*/*/*/*"
 
 gog_install() {
 	dodir ${GOG_DIR}
@@ -73,8 +75,12 @@ gog_src_unpack() {
 }
 
 gog_src_install() {
-	newicon ${GOG_ICON} gog_${PN}.${GOG_ICON##*.}
+	if [[ ${GOG_TYPE} == "64BIT" ]]; then
+		use x86 && GOG_EXE="${GOG_EXE}${GOG_SUFFIX32}"
+		use amd64 && GOG_EXE="${GOG_EXE}${GOG_SUFFIX64}"
+	fi
 	make_wrapper gog_${PN} "./${GOG_EXE}" "${GOG_DIR}" "${GOG_DIR}/lib"
+	newicon ${GOG_ICON} gog_${PN}.${GOG_ICON##*.}
 	make_desktop_entry gog_${PN} "${GOG_NAME}" gog_${PN}
 	prepgamesdirs
 }
