@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# FIXME fix QA_WX_LOAD
+# TODO unbundle mono?
+# TODO delete files for the other arch
+
 EAPI=5
 
 DESCRIPTION="Puzzle game where you help mice in their relentless quest for cheese"
