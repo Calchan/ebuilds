@@ -28,7 +28,7 @@ else
 	GOG_DEPEND="${GOG_DEPEND} virtual/opengl"
 fi
 
-if [[ ${GOG_TYPE} == "64BIT" ]]; then
+if [[ ${GOG_TYPE} == "MULTILIB" ]]; then
 	for dep in ${GOG_DEPEND}; do
 		always_deps="${always_deps} ${dep}[abi_x86_32(-)]"
 	done
@@ -95,7 +95,7 @@ gog_src_prepare() {
 }
 
 gog_src_install() {
-	if [[ ${GOG_TYPE} == "64BIT" ]]; then
+	if [[ ${GOG_TYPE} == "MULTILIB" ]]; then
 		use x86 && suffix_list=${GOG_SUFFIX32}
 		use amd64 && suffix_list=${GOG_SUFFIX64}
 		for suffix in ${suffix_list}; do
@@ -110,7 +110,7 @@ gog_src_install() {
 	newicon ${GOG_ICON} gog_${PN}.${GOG_ICON##*.}
 	make_desktop_entry gog_${PN} "${GOG_NAME}" gog_${PN}
 	if [[ ${GOG_EXTRA_EXE} != "" ]]; then
-		if [[ ${GOG_TYPE} == "64BIT" ]]; then
+		if [[ ${GOG_TYPE} == "MULTILIB" ]]; then
 			use x86 && suffix_list=${GOG_SUFFIX32}
 			use amd64 && suffix_list=${GOG_SUFFIX64}
 			for suffix in ${suffix_list}; do

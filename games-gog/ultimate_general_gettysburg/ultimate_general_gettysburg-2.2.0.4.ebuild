@@ -13,7 +13,7 @@ GOG_EXE="Ultimate General Gettysburg"
 GOG_EXTRA_EXE="Ultimate General Multiplayer"
 GOG_EXTRA_NAME="Ultimate General: Gettysburg (Multiplayer)"
 GOG_EXTRA_DESCRIPTION="Multiplayer client for Ultimate General: Gettysburg"
-GOG_TYPE="64BIT"
+GOG_TYPE="MULTILIB"
 
 inherit gog
 

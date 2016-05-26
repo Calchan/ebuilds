@@ -12,7 +12,7 @@ DESCRIPTION="Puzzle game where you help mice in their relentless quest for chees
 GOG_NAME="MouseCraft"
 GOG_PAGE="mousecraft"
 GOG_EXE="MouseCraft"
-GOG_TYPE="64BIT"
+GOG_TYPE="MULTILIB"
 
 inherit gog
 

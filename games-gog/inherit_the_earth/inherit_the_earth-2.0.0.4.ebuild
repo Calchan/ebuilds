@@ -8,7 +8,7 @@ DESCRIPTION="Adventure game full of talking, humanoid animals"
 GOG_NAME="Inherit the Earth"
 GOG_PAGE="inherit_the_earth"
 GOG_EXE="itegame"
-GOG_TYPE="64BIT"
+GOG_TYPE="MULTILIB"
 
 inherit gog
 
