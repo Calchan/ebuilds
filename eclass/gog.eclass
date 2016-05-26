@@ -81,14 +81,17 @@ gog_src_unpack() {
 }
 
 gog_src_prepare() {
-	cat <<-EOF >> gog_${PN}
-		#!/bin/sh
-		mkdir -p "\${HOME}/.local/share/gog/${PN}"
-		cd "\${HOME}/.local/share/gog/${PN}"
-		find . -type l -delete
-		for file in \$(find "${GOG_DIR}" -mindepth 1); do ln -s "\${file}" .; done
-		dosbox "${GOG_EXE}" -exit
-	EOF
+	if [[ ${GOG_TYPE} == "DOSBOX" ]]; then
+		cat <<-EOF >> gog_${PN}
+			#!/bin/sh
+			mkdir -p "\${HOME}/.local/share/gog/${PN}"
+			cd "\${HOME}/.local/share/gog/${PN}"
+			find . -type l -delete
+			for item in ${GOG_LOCAL_COPY}; do mkdir -p \$(dirname "\${item}"); cp -rfn "${GOG_DIR}/\${item}" .; done
+			cp -rsn "${GOG_DIR}" ..
+			dosbox "${GOG_EXE}" -exit
+		EOF
+	fi
 }
 
 gog_src_install() {
