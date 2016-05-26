@@ -51,8 +51,8 @@ DEPEND="${DEPEND} app-arch/unzip"
 S=${WORKDIR}/data/noarch
 GOG_DIR=${GAMES_PREFIX_OPT}/gog/${PN}
 GOG_ICON="support/icon.png"
-GOG_SUFFIX32=".x86"
-GOG_SUFFIX64=".x86_64"
+GOG_SUFFIX32=".x86 32.bin"
+GOG_SUFFIX64=".x86_64 64.bin"
 
 QA_PREBUILT="${QA_PREBUILT} ${GOG_DIR}/* ${GOG_DIR}/*/* ${GOG_DIR}/*/*/* ${GOG_DIR}/*/*/*/* ${GOG_DIR}/*/*/*/*/*"
 
@@ -96,8 +96,11 @@ gog_src_prepare() {
 
 gog_src_install() {
 	if [[ ${GOG_TYPE} == "64BIT" ]]; then
-		use x86 && GOG_EXE="${GOG_EXE}${GOG_SUFFIX32}"
-		use amd64 && GOG_EXE="${GOG_EXE}${GOG_SUFFIX64}"
+		use x86 && suffix_list=${GOG_SUFFIX32}
+		use amd64 && suffix_list=${GOG_SUFFIX64}
+		for suffix in ${suffix_list}; do
+			[[ -f "${D}/${GOG_DIR}/${GOG_EXE}${suffix}" ]] && GOG_EXE="${GOG_EXE}${suffix}"
+		done
 	fi
 	if [[ ${GOG_TYPE} == "DOSBOX" ]]; then
 		dogamesbin gog_${PN}
@@ -108,8 +111,11 @@ gog_src_install() {
 	make_desktop_entry gog_${PN} "${GOG_NAME}" gog_${PN}
 	if [[ ${GOG_EXTRA_EXE} != "" ]]; then
 		if [[ ${GOG_TYPE} == "64BIT" ]]; then
-			use x86 && GOG_EXTRA_EXE="${GOG_EXTRA_EXE}${GOG_SUFFIX32}"
-			use amd64 && GOG_EXTRA_EXE="${GOG_EXTRA_EXE}${GOG_SUFFIX64}"
+			use x86 && suffix_list=${GOG_SUFFIX32}
+			use amd64 && suffix_list=${GOG_SUFFIX64}
+			for suffix in ${suffix_list}; do
+				[[ -f "${D}/${GOG_DIR}/${GOG_EXTRA_EXE}${suffix}" ]] && GOG_EXE="${GOG_EXTRA_EXE}${suffix}"
+			done
 		fi
 		make_wrapper gog_${PN}_extra "\"./${GOG_EXTRA_EXE}\"" "${GOG_DIR}" "${GOG_DIR}/lib"
 		make_desktop_entry gog_${PN}_extra "${GOG_EXTRA_NAME}" gog_${PN} "" "Comment=${GOG_EXTRA_DESCRIPTION}"
