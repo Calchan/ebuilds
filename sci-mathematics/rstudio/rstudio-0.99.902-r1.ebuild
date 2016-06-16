@@ -55,7 +55,6 @@ RDEPEND="app-text/pandoc
 	>=dev-qt/qtnetwork${QT}
 	>=dev-qt/qtpositioning${QT}
 	>=dev-qt/qtprintsupport${QT}
-	>=dev-qt/qtquick1${QT}
 	>=dev-qt/qtsensors${QT}
 	>=dev-qt/qtsql${QT}
 	>=dev-qt/qtsvg${QT}
