@@ -52,6 +52,7 @@ pkg_preinst() {
 
 pkg_postinst() {
 	elog "app-dicts/kasumi is not required but probably useful for you."
+	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
