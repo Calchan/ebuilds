@@ -2,14 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 inherit autotools eutils python-single-r1 autotools gnome2-utils
 
+COMMIT="6aa89efa0e3b86af08d479187dba33554c701ec6"
+
 DESCRIPTION="Japanese input method Anthy IMEngine for IBus Framework"
 HOMEPAGE="https://github.com/fujiwarat/ibus-anthy"
-SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz
-	https://raw.github.com/ibus/ibus-anthy/${PV}/engine/anthy.i"
+SRC_URI="${HOMEPAGE}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -26,15 +27,16 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( >=sys-devel/gettext-0.16.1 )"
 
+S=${WORKDIR}/${PN}-${COMMIT}
+
 src_prepare() {
 	eautoreconf
 	>py-compile #397497
-	cp "${DISTDIR}"/anthy.i "${S}"/engine # deal with packaging bug
+	eapply_user
 }
 
 src_configure() {
-	econf --enable-private-png \
-		$(use_enable nls)
+	econf --libexecdir=/usr/libexec --enable-private-png $(use_enable nls)
 }
 
 src_install() {
