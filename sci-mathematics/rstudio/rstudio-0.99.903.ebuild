@@ -70,7 +70,7 @@ RDEPEND="app-text/pandoc
 DEPEND="${RDEPEND}
 	app-arch/unzip
 	dev-java/ant-core
-	>=virtual/jdk-1.5
+	>=virtual/jre-1.7:=
 	virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}"/${P}-*.patch )
