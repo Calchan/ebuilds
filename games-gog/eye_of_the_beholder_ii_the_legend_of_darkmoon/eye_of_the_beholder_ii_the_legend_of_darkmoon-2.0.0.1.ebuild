@@ -2,19 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="Classic first-person RPG, investigate the temple of Darkmoon"
 GOG_NAME="Eye of the Beholder II: The Legend of Darkmoon"
 GOG_PAGE="forgotten_realms_the_archives_collection_one"
 GOG_EXE="START.EXE"
-GOG_TYPE="DOSBOX"
 
-inherit gog
-
-KEYWORDS="~amd64 ~x86"
+inherit gog-dos
 
 src_install() {
 	gog_install -d data
-	gog_src_install
+	gog-dos_src_install
 }
