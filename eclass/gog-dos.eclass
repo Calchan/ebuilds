@@ -5,7 +5,7 @@
 # @ECLASS: gog.eclass
 # @MAINTAINER:
 # Denis Dupeyron <calchan@gentoo.org>
-# @BLURB: Install GOG games.
+# @BLURB: Install DOSBOX-based GOG games.
 # @DESCRIPTION:
 # Describe some sort of description here.
 
@@ -15,6 +15,8 @@ case ${EAPI:-0} in
 	6) EXPORT_FUNCTIONS src_prepare src_install;;
 	*) die "EAPI=${EAPI} is not supported by gog-dos.eclass";;
 esac
+
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND="games-emulation/dosbox"
 

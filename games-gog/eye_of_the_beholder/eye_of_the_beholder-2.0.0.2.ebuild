@@ -11,8 +11,6 @@ GOG_EXE="START1.EXE"
 
 inherit gog-dos
 
-KEYWORDS="~amd64 ~x86"
-
 src_install() {
 	gog_install -d data
 	gog-dos_src_install
