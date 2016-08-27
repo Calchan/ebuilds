@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# @ECLASS: gog.eclass
+# @ECLASS: gog-dos.eclass
 # @MAINTAINER:
 # Denis Dupeyron <calchan@gentoo.org>
 # @BLURB: Install DOSBOX-based GOG games.
