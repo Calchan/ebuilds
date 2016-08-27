@@ -33,6 +33,7 @@ fi
 
 gog-32_src_install() {
 	gog_wrapper ${PN} ${GOG_EXE}
+	make_desktop_entry gog_${PN} "${GOG_NAME}" gog_${PN}
 	if [[ ${GOG_EXTRA_EXE} != "" ]]; then
 		gog_wrapper ${PN}_extra ${GOG_EXTRA_EXE}
 		make_desktop_entry gog_${PN}_extra "${GOG_EXTRA_NAME}" gog_${PN} "" "Comment=${GOG_EXTRA_DESCRIPTION}"

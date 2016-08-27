@@ -68,7 +68,6 @@ gog_src_unpack() {
 
 gog_src_install() {
 	newicon ${GOG_ICON} gog_${PN}.${GOG_ICON##*.}
-	make_desktop_entry gog_${PN} "${GOG_NAME}" gog_${PN}
 }
 
 gog_pkg_preinst() {

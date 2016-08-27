@@ -35,5 +35,6 @@ gog-dos_src_prepare() {
 
 gog-dos_src_install() {
 	dobin gog_${PN}
+	make_desktop_entry gog_${PN} "${GOG_NAME}" gog_${PN}
 	gog_src_install
 }
