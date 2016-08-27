@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="Epic fantasy RPG mixing mystery, intrigue, and adventure"
 GOG_NAME="Baldur's Gate: Enhanced Edition"
@@ -25,9 +25,7 @@ GOG_BUNDLE="
 "
 GOG_EXE="BaldursGate"
 
-inherit gog
-
-KEYWORDS="~amd64 ~x86"
+inherit gog-32
 
 src_install() {
 	gog_install -d game
@@ -36,6 +34,5 @@ src_install() {
 	else
 		gog_install lib
 	fi
-	gog_install docs/Manuals
-	gog_src_install
+	gog-32_src_install
 }

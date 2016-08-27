@@ -27,10 +27,8 @@ DEPEND="${DEPEND} app-arch/unzip"
 S=${WORKDIR}/data/noarch
 GOG_DIR=/opt/gog/${PN}
 GOG_ICON="support/icon.png"
-GOG_SUFFIX32=".x86 32.bin"
-GOG_SUFFIX64=".x86_64 64.bin"
 
-# TODO Find a better way to do this
+# FIXME Find a better way to do this
 QA_PREBUILT="${QA_PREBUILT} ${GOG_DIR}/* ${GOG_DIR}/*/* ${GOG_DIR}/*/*/* ${GOG_DIR}/*/*/*/* ${GOG_DIR}/*/*/*/*/*"
 
 gog_install() {
@@ -41,6 +39,17 @@ gog_install() {
 	else
 		mv "${1}" "${D}/${GOG_DIR}/${2}" || die
 	fi
+}
+
+gog_wrapper() {
+	local tmpwrapper=$(emktemp)
+	echo "#!/bin/sh" > ${tmpwrapper}
+	# FIXME Make that optional
+	echo "export LIBGL_DRI3_DISABLE=1" >> ${tmpwrapper}
+	echo "export LD_LIBRARY_PATH=${GOG_DIR}/lib" >> ${tmpwrapper}
+	echo "cd ${GOG_DIR}" >> ${tmpwrapper}
+	echo "exec ./${2}" >> ${tmpwrapper}
+	newbin ${tmpwrapper} gog_${1}
 }
 
 gog_linklib() {
