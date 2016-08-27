@@ -6,19 +6,16 @@
 # TODO unbundle mono?
 # TODO delete files for the other arch
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="Puzzle game where you help mice in their relentless quest for cheese"
 GOG_NAME="MouseCraft"
 GOG_PAGE="mousecraft"
 GOG_EXE="MouseCraft"
-GOG_TYPE="MULTILIB"
 
-inherit gog
-
-KEYWORDS="~amd64 ~x86"
+inherit gog-3264
 
 src_install() {
 	gog_install -d game
-	gog_src_install
+	gog-3264_src_install
 }
