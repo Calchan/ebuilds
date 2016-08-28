@@ -4,18 +4,16 @@
 
 # TODO unbundle?
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="Puzzle game based on principles of automation and chemical bonding"
 GOG_NAME="SpaceChem"
 GOG_PAGE="spacechem"
 GOG_EXE="spacechem-launcher.sh"
 
-inherit gog
-
-KEYWORDS="~amd64 ~x86"
+inherit gog-32
 
 src_install() {
 	gog_install -d game
-	gog_src_install
+	gog-32_src_install
 }
