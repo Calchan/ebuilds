@@ -48,7 +48,7 @@ gog_wrapper() {
 	echo "export LIBGL_DRI3_DISABLE=1" >> ${tmpwrapper}
 	echo "export LD_LIBRARY_PATH=${GOG_DIR}/lib" >> ${tmpwrapper}
 	echo "cd ${GOG_DIR}" >> ${tmpwrapper}
-	echo "exec ./${2}" >> ${tmpwrapper}
+	echo "exec \"./${2}\"" >> ${tmpwrapper}
 	newbin ${tmpwrapper} gog_${1}
 }
 

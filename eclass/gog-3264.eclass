@@ -40,13 +40,13 @@ gog-3264_src_install() {
 	for suffix in ${suffix_list}; do
 		[[ -f "${D}/${GOG_DIR}/${GOG_EXE}${suffix}" ]] && GOG_EXE="${GOG_EXE}${suffix}"
 	done
-	gog_wrapper ${PN} ${GOG_EXE}
+	gog_wrapper ${PN} "${GOG_EXE}"
 	make_desktop_entry gog_${PN} "${GOG_NAME}" gog_${PN}
 	if [[ ${GOG_EXTRA_EXE} != "" ]]; then
 		for suffix in ${suffix_list}; do
 			[[ -f "${D}/${GOG_DIR}/${GOG_EXTRA_EXE}${suffix}" ]] && GOG_EXTRA_EXE="${GOG_EXTRA_EXE}${suffix}"
 		done
-		gog_wrapper ${PN}_extra ${GOG_EXTRA_EXE}
+		gog_wrapper ${PN}_extra "${GOG_EXTRA_EXE}"
 		make_desktop_entry gog_${PN}_extra "${GOG_EXTRA_NAME}" gog_${PN} "" "Comment=${GOG_EXTRA_DESCRIPTION}"
 	fi
 	gog_src_install
