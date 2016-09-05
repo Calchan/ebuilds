@@ -4,7 +4,7 @@
 
 EAPI=5
 
-WX_GTK_VER="3.0"
+WX_GTK_VER="3.0-gtk3"
 
 inherit mercurial wxwidgets toolchain-funcs eutils
 
@@ -20,7 +20,7 @@ IUSE=""
 
 DEPEND="dev-libs/openssl:0
 	net-misc/curl
-	x11-libs/wxGTK:2.8[X]"
+	x11-libs/wxGTK:3.0-gtk3[X]"
 RDEPEND="${DEPEND}"
 
 src_configure() {
@@ -30,11 +30,13 @@ src_configure() {
 src_compile() {
 	for source in $(find src -name '*.cpp'); do
 		einfo "Compiling ${source}..."
-		$(tc-getCXX) $(wx-config --cflags) ${CXXFLAGS} -c ${source} || die
+		echo "$(tc-getCXX) $(wx-config --version=3.0 --static=no --debug=no --cflags) ${CXXFLAGS} -c ${source}"
+		$(tc-getCXX) $(wx-config --version=3.0 --static=no --debug=no --cflags) ${CXXFLAGS} -c ${source} || die
 	done
 
 	einfo "Linking hakuneko..."
-	$(tc-getCXX) *.o -o hakuneko ${LDFLAGS} -lcurl -lcrypto -lgtk-x11-2.0 -lSM $(wx-config --libs) || die
+	echo "$(tc-getCXX) *.o -o hakuneko ${LDFLAGS} -lcurl -lcrypto -lgtk-3 -lSM $(wx-config --version=3.0 --static=no --debug=no --libs)"
+	$(tc-getCXX) *.o -o hakuneko ${LDFLAGS} -lcurl -lcrypto -lgtk-3 -lSM $(wx-config --version=3.0 --static=no --debug=no --libs) || die
 }
 
 src_install() {
