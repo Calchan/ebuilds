@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 inherit autotools eutils python-single-r1 autotools gnome2-utils
 
-COMMIT="6aa89efa0e3b86af08d479187dba33554c701ec6"
+COMMIT="e0f3400cfd72eb3c27ab5b55eba764f2d8f69639"
 
 DESCRIPTION="Japanese input method Anthy IMEngine for IBus Framework"
 HOMEPAGE="https://github.com/fujiwarat/ibus-anthy"
