@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 WX_GTK_VER="3.0-gtk3"
 
@@ -28,15 +28,15 @@ src_configure() {
 }
 
 src_compile() {
+	local compile_cmd="$(tc-getCXX) $(wx-config --version=3.0 --static=no --debug=no --cflags) ${CXXFLAGS}"
 	for source in $(find src -name '*.cpp'); do
-		einfo "Compiling ${source}..."
-		echo "$(tc-getCXX) $(wx-config --version=3.0 --static=no --debug=no --cflags) ${CXXFLAGS} -c ${source}"
-		$(tc-getCXX) $(wx-config --version=3.0 --static=no --debug=no --cflags) ${CXXFLAGS} -c ${source} || die
+		echo ${compile_cmd} -c ${source}
+		${compile_cmd} -c ${source} || die
 	done
 
-	einfo "Linking hakuneko..."
-	echo "$(tc-getCXX) *.o -o hakuneko ${LDFLAGS} -lcurl -lcrypto -lgtk-3 -lSM $(wx-config --version=3.0 --static=no --debug=no --libs)"
-	$(tc-getCXX) *.o -o hakuneko ${LDFLAGS} -lcurl -lcrypto -lgtk-3 -lSM $(wx-config --version=3.0 --static=no --debug=no --libs) || die
+	local link_cmd="$(tc-getCXX) *.o -o hakuneko ${LDFLAGS} -lcurl -lcrypto -lgtk-3 -lSM $(wx-config --version=3.0 --static=no --debug=no --libs)"
+	echo ${link_cmd}
+	${link_cmd} || die
 }
 
 src_install() {
