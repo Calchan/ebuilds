@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils games
+inherit eutils
 
 DESCRIPTION="Sandbox game in 3D procedurally generated worlds"
 HOMEPAGE="http://www.minecraft.net"
@@ -22,10 +22,9 @@ RDEPEND=">=virtual/jre-1.6
 S="${WORKDIR}"
 
 src_install() {
-	insinto "${GAMES_PREFIX_OPT}/${PN}"
+	insinto /opt/${PN}
 	doins "${DISTDIR}"/${P}.jar
-	make_wrapper "${PN}" "java -jar ${GAMES_PREFIX_OPT}/${PN}/${P}.jar" "" "" "${GAMES_BINDIR}"
+	make_wrapper ${PN} "java -jar /opt/${PN}/${P}.jar"
 	newicon favicon.png minecraft.png
-	make_desktop_entry "${GAMES_BINDIR}/${PN}" "Minecraft" minecraft.png
-	prepgamesdirs
+	make_desktop_entry ${PN} Minecraft minecraft
 }
