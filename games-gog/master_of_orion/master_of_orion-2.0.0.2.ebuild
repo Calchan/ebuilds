@@ -4,7 +4,7 @@
 
 EAPI=6
 
-DESCRIPTION="Classic gamne of 4X science fiction strategy"
+DESCRIPTION="Classic game of 4X science fiction strategy"
 GOG_NAME="Master of Orion"
 GOG_PAGE="master_of_orion_1_2"
 GOG_EXE="ORION.EXE"
