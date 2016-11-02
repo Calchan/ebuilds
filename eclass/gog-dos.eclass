@@ -26,9 +26,17 @@ gog-dos_wrapper() {
 		mkdir -p "\${HOME}/.local/share/gog/${PN}"
 		cd "\${HOME}/.local/share/gog/${PN}"
 		find . -type l -delete
-		for item in ${GOG_LOCAL_COPY}; do mkdir -p \$(dirname "\${item}"); cp -rfn "${GOG_DIR}/\${item}" .; done
-		cp -rsn "${GOG_DIR}" ..
-		dosbox "${2}" -exit
+		cd ${GOG_DIR}
+		for item in ${GOG_LOCAL_COPY}; do
+			cp -rfn --parents \${item} "\${HOME}/.local/share/gog/${PN}"
+		done
+		cd "\${HOME}/.local/share/gog/${PN}"
+		cp -rsn ${GOG_DIR} ..
+		if [[ -f dosbox.conf ]]; then
+			dosbox -conf dosbox.conf ${2} -exit
+		else
+			dosbox -userconf ${2} -exit
+		fi
 	EOF
 	eapply_user
 }
