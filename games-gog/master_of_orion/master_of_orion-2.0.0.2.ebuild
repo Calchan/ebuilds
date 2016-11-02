@@ -8,7 +8,7 @@ DESCRIPTION="Classic game of 4X science fiction strategy"
 GOG_NAME="Master of Orion"
 GOG_PAGE="master_of_orion_1_2"
 GOG_EXE="ORION.EXE"
-GOG_LOCAL_COPY="CONFIG.MOO"
+GOG_NO_SYMLINK="CONFIG.MOO"
 
 inherit gog-dos
 

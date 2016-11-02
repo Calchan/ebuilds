@@ -8,7 +8,7 @@ DESCRIPTION="AD&D RPG, sequel to Pool of Radiance"
 GOG_NAME="Curse of the Azure Bonds"
 GOG_PAGE="forgotten_realms_the_archives_collection_two"
 GOG_EXE="START.EXE"
-GOG_LOCAL_COPY="*"
+GOG_NO_SYMLINK="*"
 
 inherit gog-dos
 

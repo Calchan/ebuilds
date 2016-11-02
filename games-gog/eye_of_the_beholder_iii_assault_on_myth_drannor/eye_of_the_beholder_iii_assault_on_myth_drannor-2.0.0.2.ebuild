@@ -8,7 +8,7 @@ DESCRIPTION="Classic first-person RPG, save the city of Myth Drannor"
 GOG_NAME="Eye of the Beholder III: Assault on Myth Drannor"
 GOG_PAGE="forgotten_realms_the_archives_collection_one"
 GOG_EXE="EYE.BAT"
-GOG_LOCAL_COPY="SAVEGAME"
+GOG_NO_SYMLINK="SAVEGAME"
 
 inherit gog-dos
 

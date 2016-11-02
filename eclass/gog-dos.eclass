@@ -27,7 +27,7 @@ gog-dos_wrapper() {
 		cd "\${HOME}/.local/share/gog/${PN}"
 		find . -type l -delete
 		cd ${GOG_DIR}
-		for item in ${GOG_LOCAL_COPY}; do
+		for item in ${GOG_NO_SYMLINK}; do
 			cp -rfn --parents \${item} "\${HOME}/.local/share/gog/${PN}"
 		done
 		cd "\${HOME}/.local/share/gog/${PN}"

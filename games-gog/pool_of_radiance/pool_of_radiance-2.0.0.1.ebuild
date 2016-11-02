@@ -8,7 +8,7 @@ DESCRIPTION="Classic AD&D role-playing game"
 GOG_NAME="Pool of Radiance"
 GOG_PAGE="forgotten_realms_the_archives_collection_two"
 GOG_EXE="poolrad.bat"
-GOG_LOCAL_COPY="POOLRAD"
+GOG_NO_SYMLINK="POOLRAD"
 
 inherit gog-dos
 

@@ -8,7 +8,7 @@ DESCRIPTION="4X turn-based strategy game"
 GOG_NAME="Master of Orion II"
 GOG_PAGE="master_of_orion_1_2"
 GOG_EXE="Orion2.exe"
-GOG_LOCAL_COPY="MOX.SET SOUND.LBX"
+GOG_NO_SYMLINK="MOX.SET SOUND.LBX"
 
 inherit gog-dos
 
