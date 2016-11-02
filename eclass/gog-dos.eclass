@@ -20,16 +20,21 @@ KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND="games-emulation/dosbox"
 
-gog-dos_src_prepare() {
-	cat <<-EOF >> gog_${PN}
+gog-dos_wrapper() {
+	cat <<-EOF >> gog_${1}
 		#!/bin/sh
 		mkdir -p "\${HOME}/.local/share/gog/${PN}"
 		cd "\${HOME}/.local/share/gog/${PN}"
 		find . -type l -delete
 		for item in ${GOG_LOCAL_COPY}; do mkdir -p \$(dirname "\${item}"); cp -rfn "${GOG_DIR}/\${item}" .; done
 		cp -rsn "${GOG_DIR}" ..
-		dosbox "${GOG_EXE}" -exit
+		dosbox "${2}" -exit
 	EOF
+	eapply_user
+}
+
+gog-dos_src_prepare() {
+	gog-dos_wrapper ${PN} "${GOG_EXE}"
 	eapply_user
 }
 
