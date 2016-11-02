@@ -8,8 +8,8 @@ EAPI=6
 
 DESCRIPTION="Puzzle game based on principles of automation and chemical bonding"
 GOG_NAME="SpaceChem"
-GOG_PAGE="spacechem"
-GOG_EXE="spacechem-launcher.sh"
+GOG_VERSION=1
+GOG_EXE=spacechem-launcher.sh
 
 inherit gog-32
 

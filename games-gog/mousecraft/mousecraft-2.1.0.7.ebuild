@@ -10,8 +10,8 @@ EAPI=6
 
 DESCRIPTION="Puzzle game where you help mice in their relentless quest for cheese"
 GOG_NAME="MouseCraft"
-GOG_PAGE="mousecraft"
-GOG_EXE="MouseCraft"
+GOG_VERSION=1
+GOG_EXE=MouseCraft
 
 inherit gog-3264
 

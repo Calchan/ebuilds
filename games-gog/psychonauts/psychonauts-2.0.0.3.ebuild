@@ -6,6 +6,7 @@ EAPI=6
 
 DESCRIPTION="Delve into people's minds"
 GOG_NAME="Psychonauts"
+GOG_VERSION=1
 GOG_BUNDLE="
 	media-libs/glu
 	media-libs/libsdl
@@ -21,7 +22,7 @@ GOG_BUNDLE="
 	x11-libs/libXrandr
 	x11-libs/libXrender
 "
-GOG_EXE="Psychonauts"
+GOG_EXE=Psychonauts
 
 inherit gog-32
 

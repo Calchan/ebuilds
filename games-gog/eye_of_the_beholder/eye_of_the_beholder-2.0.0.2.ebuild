@@ -6,8 +6,9 @@ EAPI=6
 
 DESCRIPTION="Classic first-person RPG in the sewers of Waterdeep"
 GOG_NAME="Eye of the Beholder"
-GOG_PAGE="forgotten_realms_the_archives_collection_one"
-GOG_EXE="START1.EXE"
+GOG_PAGE=forgotten_realms_the_archives_collection_one
+GOG_VERSION=1
+GOG_EXE=START1.EXE
 
 inherit gog-dos
 

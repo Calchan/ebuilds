@@ -6,8 +6,9 @@ EAPI=6
 
 DESCRIPTION="Classic first-person RPG, investigate the temple of Darkmoon"
 GOG_NAME="Eye of the Beholder II: The Legend of Darkmoon"
-GOG_PAGE="forgotten_realms_the_archives_collection_one"
-GOG_EXE="START.EXE"
+GOG_PAGE=forgotten_realms_the_archives_collection_one
+GOG_VERSION=1
+GOG_EXE=START.EXE
 
 inherit gog-dos
 

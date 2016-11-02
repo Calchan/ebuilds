@@ -6,8 +6,8 @@ EAPI=6
 
 DESCRIPTION="Adventure game full of talking, humanoid animals"
 GOG_NAME="Inherit the Earth"
-GOG_PAGE="inherit_the_earth"
-GOG_EXE="itegame"
+GOG_VERSION=1
+GOG_EXE=itegame
 
 inherit gog-3264
 

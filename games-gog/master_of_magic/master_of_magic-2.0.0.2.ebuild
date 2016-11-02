@@ -6,9 +6,9 @@ EAPI=6
 
 DESCRIPTION="Fantasy 4X turn-based strategy game"
 GOG_NAME="Master of Magic"
-GOG_PAGE="master_of_magic"
-GOG_EXE="MAGIC.EXE"
-GOG_NO_SYMLINK="MAGIC.SET"
+GOG_VERSION=1
+GOG_EXE=MAGIC.EXE
+GOG_NO_SYMLINK=MAGIC.SET
 
 inherit gog-dos
 

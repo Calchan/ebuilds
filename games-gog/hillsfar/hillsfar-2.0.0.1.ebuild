@@ -6,8 +6,10 @@ EAPI=6
 
 DESCRIPTION="AD&D RPG, side story to Pool of Radiance"
 GOG_NAME="Hillsfar"
-GOG_PAGE="forgotten_realms_the_archives_collection_two"
-GOG_EXE="MAIN.EXE"
+GOG_PAGE=forgotten_realms_the_archives_collection_two
+GOG_INSTALLER=hillsfar_copy3
+GOG_VERSION=1
+GOG_EXE=MAIN.EXE
 
 inherit gog-dos
 

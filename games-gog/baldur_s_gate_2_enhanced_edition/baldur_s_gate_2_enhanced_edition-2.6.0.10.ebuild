@@ -6,7 +6,9 @@ EAPI=6
 
 DESCRIPTION="Epic fantasy RPG mixing mystery, intrigue, and adventure"
 GOG_NAME="Baldur's Gate II: Enhanced Edition"
-GOG_PAGE="baldurs_gate_2_enhanced_edition"
+GOG_PAGE=baldurs_gate_2_enhanced_edition
+GOG_INSTALLER=baldurs_gate_2_enhanced_edition
+GOG_VERSION=8
 GOG_BUNDLE="
 	dev-libs/expat
 	dev-libs/json-c
@@ -23,7 +25,7 @@ GOG_BUNDLE="
 	x11-libs/libXrandr
 	x11-libs/libXrender
 "
-GOG_EXE="BaldursGateII"
+GOG_EXE=BaldursGateII
 
 inherit gog-32
 

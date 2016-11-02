@@ -16,7 +16,7 @@ case ${EAPI:-0} in
 	*) die "EAPI=${EAPI} is not supported by gog.eclass";;
 esac
 
-HOMEPAGE="https://www.gog.com/game/${GOG_PAGE}"
+HOMEPAGE="https://www.gog.com/game/${GOG_PAGE:-${PN}}"
 SRC_URI="gog_${PN}_${PV}.sh"
 LICENSE="all-rights-reserved"
 SLOT="0"
@@ -27,6 +27,7 @@ DEPEND="${DEPEND} app-arch/unzip"
 S=${WORKDIR}/data/noarch
 GOG_DIR=/opt/gog/${PN}
 GOG_ICON="support/icon.png"
+GOG_INSTALLER_URI="${GOG_INSTALLER:-${PN}}/en3installer${GOG_VERSION}"
 
 # FIXME Find a better way to do this
 QA_PREBUILT="${QA_PREBUILT} ${GOG_DIR}/* ${GOG_DIR}/*/* ${GOG_DIR}/*/*/* ${GOG_DIR}/*/*/*/* ${GOG_DIR}/*/*/*/*/*"
@@ -59,7 +60,13 @@ gog_linklib() {
 }
 
 gog_pkg_nofetch() {
-	einfo "Please download ${SRC_URI} from your GOG account and save it into ${DISTDIR}"
+	echo
+	einfo "Please buy ${GOG_NAME} from GOG. Then go to"
+	einfo "        https://www.gog.com/downlink/${GOG_INSTALLER_URI}"
+	einfo "in order to download"
+	einfo "        ${SRC_URI}"
+	einfo "and save it into"
+	einfo "        ${DISTDIR}"
 }
 
 gog_src_unpack() {

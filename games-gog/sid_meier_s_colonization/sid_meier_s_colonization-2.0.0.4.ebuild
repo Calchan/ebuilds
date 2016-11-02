@@ -6,9 +6,11 @@ EAPI=6
 
 DESCRIPTION="Turn-based strategy game on the colonization of the New World"
 GOG_NAME="Sid Meier's Colonization"
-GOG_PAGE="sid_meiers_colonization"
-GOG_EXE="COLONIZE.BAT"
-GOG_NO_SYMLINK="AMER2.MP"
+GOG_PAGE=sid_meiers_colonization
+GOG_INSTALLER=sid_meiers_colonization
+GOG_VERSION=1
+GOG_EXE=COLONIZE.BAT
+GOG_NO_SYMLINK=AMER2.MP
 
 inherit gog-dos
 
