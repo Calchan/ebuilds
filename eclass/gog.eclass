@@ -59,7 +59,7 @@ gog_linklib() {
 }
 
 gog_pkg_nofetch() {
-	einfo "Please download ${SRC_URI} from your GOG account and move it to ${DISTDIR}"
+	einfo "Please download ${SRC_URI} from your GOG account and save it into ${DISTDIR}"
 }
 
 gog_src_unpack() {
