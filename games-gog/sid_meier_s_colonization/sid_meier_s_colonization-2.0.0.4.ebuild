@@ -22,6 +22,6 @@ src_prepare() {
 src_install() {
 	gog_install -d data/MPS/COLONIZE
 	dobin gog_${PN}_editor
-	make_desktop_entry gog_${PN}_editor "${GOG_NAME}" gog_${PN} "" "Comment=Map editor"
+	make_desktop_entry gog_${PN}_editor "${GOG_NAME} (editor)" gog_${PN} "" "Comment=Map editor for ${GOG_NAME}"
 	gog-dos_src_install
 }
