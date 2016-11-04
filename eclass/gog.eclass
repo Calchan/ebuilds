@@ -45,8 +45,6 @@ gog_install() {
 gog_wrapper() {
 	local tmpwrapper=$(emktemp)
 	echo "#!/bin/sh" > ${tmpwrapper}
-	# FIXME Make that optional
-	echo "export LIBGL_DRI3_DISABLE=1" >> ${tmpwrapper}
 	echo "export LD_LIBRARY_PATH=${GOG_DIR}/lib" >> ${tmpwrapper}
 	echo "cd ${GOG_DIR}" >> ${tmpwrapper}
 	echo "exec \"./${2}\"" >> ${tmpwrapper}
