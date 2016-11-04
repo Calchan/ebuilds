@@ -10,9 +10,8 @@ GOG_VERSION=1
 GOG_EXE=launcher.bin.x86
 GOG_BUNDLE="
 	media-gfx/nvidia-cg-toolkit
-	x11-libs/fltk
 	media-libs/libsdl2
-	media-libs/mesa
+	x11-libs/fltk
 	x11-libs/libX11
 "
 
