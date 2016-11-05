@@ -31,8 +31,8 @@ if [[ ${bundle_deps} != "" ]]; then
 	RDEPEND="${RDEPEND} unbundle? ( ${bundle_deps} )"
 fi
 
-GOG_SUFFIX32=".x86 32.bin"
-GOG_SUFFIX64=".x86_64 64.bin"
+GOG_SUFFIX32=".x86 32.bin 32"
+GOG_SUFFIX64=".x86_64 64.bin 64"
 
 gog-3264_src_install() {
 	use x86 && suffix_list=${GOG_SUFFIX32}
