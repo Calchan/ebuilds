@@ -8,7 +8,7 @@ DESCRIPTION="Epic fantasy RPG mixing mystery, intrigue, and adventure"
 GOG_NAME="Baldur's Gate: Enhanced Edition"
 GOG_PAGE=baldurs_gate_enhanced_edition
 GOG_INSTALLER=baldurs_gate_enhanced_edition
-GOG_VERSION=4
+GOG_VERSION=5
 GOG_BUNDLE="
 	dev-libs/expat
 	dev-libs/json-c
