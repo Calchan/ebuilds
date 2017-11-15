@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python3_4 )
+PYTHON_COMPAT=( python3_{4,5,6} )
 inherit versionator gnome2-utils distutils-r1
 
 DESCRIPTION="Advanced FreeDesktop.org compliant menu editor"
@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="dev-libs/gobject-introspection
-	dev-python/psutil
+	dev-python/psutil[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	>=gnome-base/gnome-menus-3.5.3[introspection]
 	x11-libs/gdk-pixbuf[introspection,X]
