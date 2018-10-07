@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
-    <email>calchan@gentoo.org</email>
+  <maintainer  type="person">
     <name>Denis Dupeyron</name>
+    <email>calchan@gentoo.org</email>
   </maintainer>
 <use>
   <flag name="cache-sync">Enable explicit synchronization of the CPU cache, required for most non-Intel architectures to support lock-free multi-threading</flag>
